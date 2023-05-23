@@ -1,0 +1,136 @@
+<!--
+此文件为开发者工具生成，生成时间: 2023/5/22下午9:48:40
+使用方法：
+在 D:\桌面\school_chat\pages\home\index_2\index_2.wxml 引入模板
+
+```
+<import src="index_2.skeleton.wxml"/>
+<template is="skeleton" wx:if="{{loading}}" />
+```
+
+在 D:\桌面\school_chat\pages\home\index_2\index_2.wxss 中引入样式
+```
+@import "./index_2.skeleton.wxss";
+```
+
+更多详细信息可以参考文档：https://developers.weixin.qq.com/miniprogram/dev/devtools/skeleton.html
+-->
+<template name="skeleton">
+  <view class="sk-container">
+    <view is="components/topBar/topbar">
+      <view class="topbar--nav-bar" style="height:37px; padding-top: 48px;">
+        <view class="topbar--title sk-transparent sk-text-14-2857-389 sk-text">
+          校园小情书
+        </view>
+      </view>
+    </view>
+    <view class="container">
+      <view is="components/search/search">
+        <view class="search--input-container">
+          <view class="search--search" style="transform: scaleX()"></view>
+          <view class="search--search-image">
+            <image mode="true" class="sk-image"></image>
+          </view>
+        </view>
+      </view>
+      <view is="components/newHeader/newHeader" id="Header">
+        <view class="newHeader--header_container">
+          <view class="newHeader--navigation-item">
+            <view class="newHeader--select-tab sk-transparent sk-text-14-2857-704 sk-text" data-type="0">全部</view>
+            <view class="newHeader--select-tab-bootom"></view>
+          </view>
+          <view class="newHeader--navigation-item">
+            <view class="newHeader--select-tab sk-transparent sk-text-14-2857-649 sk-text" data-type="1">最热</view>
+            <view></view>
+          </view>
+          <view class="newHeader--navigation-item">
+            <view class="newHeader--select-tab sk-transparent sk-text-14-2857-762 sk-text" data-type="2">收藏</view>
+            <view></view>
+          </view>
+        </view>
+        <view class="newHeader--post_container">
+          <view class="newHeader--post_content">
+            <swiper class="newHeader--container" current="0" autoplay="false">
+              <swiper-item style="position: absolute; width: 100%; height: 100%; transform: translate(0%, 0px) translateZ(0px);">
+                <scroll-view refresher-enabled="true" scroll-y="true" scroll-top="0" style="height:80vh;">
+                  <view>
+                    <view is="components/postItem/postItem" class="post_container">
+                      <view class="postItem--body-item">
+                        <view class="postItem--item-header">
+                          <view class="postItem--avatar-item" data-id="22">
+                            <image class="postItem--avatar-border sk-image"></image>
+                            <image class="postItem--user-avatar sk-image"></image>
+                          </view>
+                          <view class="postItem--nickname-item" data-id="22">
+                            <view class="postItem--nickname-top">
+                              <view class="postItem--poster-nickname sk-transparent sk-text-12-5000-309 sk-text">傻逼</view>
+                            </view>
+                            <view class="postItem--nickname-bottom">
+                              <view class="postItem--nickname-flag sk-transparent sk-image">表白@</view>
+                              <view class="postItem--bottom-name sk-transparent sk-opacity">w</view>
+                            </view>
+                          </view>
+                          <view class="postItem--icon-item">
+                            <image data-index="0" id="0a4ee965--40" class="sk-image"></image>
+                          </view>
+                        </view>
+                        <view class="postItem--item-content">
+                          <view class="postItem--item-content-word sk-transparent sk-text-14-2857-768 sk-text">wd</view>
+                          <view class="postItem--item-content-image">
+                            <image data-obj="upload/1684498173899-kbb0zn.jpg,upload/1684498173910-i13wtc.jpg,upload/1684498173930-lc01sw.jpg,upload/1684498174676-qjure7.jpg,upload/1684498174679-981ww7.jpg,upload/1684498174680-6mfgcl.jpg,upload/1684498174683-nqy3eb.jpg,upload/1684498174684-mtluhi.jpg,upload/1684498174686-2txfei.jpg"
+                              id="0a4ee965--http://192.168.0.103:3001/upload/1684498173899-kbb0zn.jpg" mode="aspectFill" class="sk-image"></image>
+                            <image data-obj="upload/1684498173899-kbb0zn.jpg,upload/1684498173910-i13wtc.jpg,upload/1684498173930-lc01sw.jpg,upload/1684498174676-qjure7.jpg,upload/1684498174679-981ww7.jpg,upload/1684498174680-6mfgcl.jpg,upload/1684498174683-nqy3eb.jpg,upload/1684498174684-mtluhi.jpg,upload/1684498174686-2txfei.jpg"
+                              id="0a4ee965--http://192.168.0.103:3001/upload/1684498173910-i13wtc.jpg" mode="aspectFill" class="sk-image"></image>
+                            <image data-obj="upload/1684498173899-kbb0zn.jpg,upload/1684498173910-i13wtc.jpg,upload/1684498173930-lc01sw.jpg,upload/1684498174676-qjure7.jpg,upload/1684498174679-981ww7.jpg,upload/1684498174680-6mfgcl.jpg,upload/1684498174683-nqy3eb.jpg,upload/1684498174684-mtluhi.jpg,upload/1684498174686-2txfei.jpg"
+                              id="0a4ee965--http://192.168.0.103:3001/upload/1684498173930-lc01sw.jpg" mode="aspectFill" class="sk-image"></image>
+                            <image data-obj="upload/1684498173899-kbb0zn.jpg,upload/1684498173910-i13wtc.jpg,upload/1684498173930-lc01sw.jpg,upload/1684498174676-qjure7.jpg,upload/1684498174679-981ww7.jpg,upload/1684498174680-6mfgcl.jpg,upload/1684498174683-nqy3eb.jpg,upload/1684498174684-mtluhi.jpg,upload/1684498174686-2txfei.jpg"
+                              id="0a4ee965--http://192.168.0.103:3001/upload/1684498174676-qjure7.jpg" mode="aspectFill" class="sk-image"></image>
+                            <image data-obj="upload/1684498173899-kbb0zn.jpg,upload/1684498173910-i13wtc.jpg,upload/1684498173930-lc01sw.jpg,upload/1684498174676-qjure7.jpg,upload/1684498174679-981ww7.jpg,upload/1684498174680-6mfgcl.jpg,upload/1684498174683-nqy3eb.jpg,upload/1684498174684-mtluhi.jpg,upload/1684498174686-2txfei.jpg"
+                              id="0a4ee965--http://192.168.0.103:3001/upload/1684498174679-981ww7.jpg" mode="aspectFill" class="sk-image"></image>
+                            <image data-obj="upload/1684498173899-kbb0zn.jpg,upload/1684498173910-i13wtc.jpg,upload/1684498173930-lc01sw.jpg,upload/1684498174676-qjure7.jpg,upload/1684498174679-981ww7.jpg,upload/1684498174680-6mfgcl.jpg,upload/1684498174683-nqy3eb.jpg,upload/1684498174684-mtluhi.jpg,upload/1684498174686-2txfei.jpg"
+                              id="0a4ee965--http://192.168.0.103:3001/upload/1684498174680-6mfgcl.jpg" mode="aspectFill" class="sk-image"></image>
+                            <image data-obj="upload/1684498173899-kbb0zn.jpg,upload/1684498173910-i13wtc.jpg,upload/1684498173930-lc01sw.jpg,upload/1684498174676-qjure7.jpg,upload/1684498174679-981ww7.jpg,upload/1684498174680-6mfgcl.jpg,upload/1684498174683-nqy3eb.jpg,upload/1684498174684-mtluhi.jpg,upload/1684498174686-2txfei.jpg"
+                              id="0a4ee965--http://192.168.0.103:3001/upload/1684498174683-nqy3eb.jpg" mode="aspectFill" class="sk-image"></image>
+                            <image data-obj="upload/1684498173899-kbb0zn.jpg,upload/1684498173910-i13wtc.jpg,upload/1684498173930-lc01sw.jpg,upload/1684498174676-qjure7.jpg,upload/1684498174679-981ww7.jpg,upload/1684498174680-6mfgcl.jpg,upload/1684498174683-nqy3eb.jpg,upload/1684498174684-mtluhi.jpg,upload/1684498174686-2txfei.jpg"
+                              id="0a4ee965--http://192.168.0.103:3001/upload/1684498174684-mtluhi.jpg" mode="aspectFill" class="sk-image"></image>
+                            <image data-obj="upload/1684498173899-kbb0zn.jpg,upload/1684498173910-i13wtc.jpg,upload/1684498173930-lc01sw.jpg,upload/1684498174676-qjure7.jpg,upload/1684498174679-981ww7.jpg,upload/1684498174680-6mfgcl.jpg,upload/1684498174683-nqy3eb.jpg,upload/1684498174684-mtluhi.jpg,upload/1684498174686-2txfei.jpg"
+                              id="0a4ee965--http://192.168.0.103:3001/upload/1684498174686-2txfei.jpg" mode="aspectFill" class="sk-image"></image>
+                          </view>
+                        </view>
+                        <view class="postItem--item-footer">
+                          <view class="postItem--date sk-transparent sk-text-14-2857-730 sk-text">05-19 09:9</view>
+                          <view class="postItem--letter-icon">
+                            <image data-objid="40" data-objtype="1" class="sk-image"></image>
+                            <view class="sk-transparent sk-opacity">1</view>
+                          </view>
+                          <view class="postItem--letter-icon">
+                            <image data-index="0" data-obj="40" class="sk-image"></image>
+                            <view class="sk-transparent sk-opacity">0</view>
+                          </view>
+                        </view>
+                        <view class="postItem--comment-content">
+                          <view class="postItem--comment-list">
+                            <view class="postItem--comment-left">
+                              <image class="sk-image"></image>
+                            </view>
+                            <view class="postItem--comment-right">
+                              <view class="postItem--comment-item" data-index="0" data-objid="225" data-refid="20">
+                                <view class="postItem--comment-name sk-transparent sk-text-14-2857-615 sk-text">拒绝</view>
+                                <view class="postItem--comment-word sk-transparent sk-text-14-2857-449 sk-text">：傻逼</view>
+                              </view>
+                            </view>
+                          </view>
+                        </view>
+                      </view>
+                    </view>
+                    <view is="components/postItem/postItem" class="post_container"></view>
+                  </view>
+                </scroll-view>
+              </swiper-item>
+            </swiper>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</template>

@@ -1,0 +1,9 @@
+{
+    "usingComponents": {
+        "van-tab": "@vant/weapp/tab/index",
+        "van-tabs": "@vant/weapp/tabs/index",
+        "topBar": "/components/topBar/topbar",
+        "newHeader": "/components/newHeader/newHeader",
+        "postItem": "/components/postItem/postItem"
+    }
+}

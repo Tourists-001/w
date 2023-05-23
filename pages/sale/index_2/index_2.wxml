@@ -1,0 +1,115 @@
+<import src="index_2.skeleton.wxml"/>
+<template is="skeleton" wx:if="{{loading}}" />
+<topBar  showTabSearch="{{false}}" ></topBar>
+	<headerBar bindselectBar="selectBar" class="select" bindgetFilter="getFilterValue" bindsearch="searchPost"></headerBar>
+<scroll-view  wx:if="{{!loading}}" scroll-y style="height: 95vh;" bindscrolltolower="scrollView" refresher-enabled 	refresher-triggered="{{isRefresh}}" bindrefresherrefresh="refresherpulling">
+	<view class="sale-container">
+
+	<view class="container" wx:if="{{index === 1}}">
+		<view class='content'>
+			<view class='content-left'>
+                 <sale List="{{leftList}}" height="{{500}}"  style="width: 360rpx;"></sale>
+			</view>
+			<view class='content-right'>
+				<sale List="{{rightList}}" height="{{360}}" style="width: 360rpx;"></sale>
+			</view>
+		</view>
+	</view>
+	<view class="container" wx:if="{{index === 2}}">
+		<view class='content'>
+			<view class='content-left'>
+				<view class='item' wx:for="{{leftList}}" catchtap='comment' data-objid='{{item.id}}' wx:key="id">
+					<image class='main-pic' mode='aspectFill' src='{{baseImageUrl+item.attachments[0]}}' style="height: 516rpx"></image>
+					<view class='footer'>
+						<view class='footer-item'>
+							<view class='user-info' catchtap="openUserInfo" data-id="{{item.poster.id}}">
+								<image class='icon avatar' src='{{item.poster.avatar}}'></image>
+								<image class="left-avatar-border" src="/image/v2/border.png"></image>
+								<view class="user-name">{{item.poster.nickName}}</view>
+							</view>
+							<view class="introduce">{{item.introduce}}</view>
+							<view class='share-icon'>
+								<view>{{item.comment_number}}</view>
+								<image class="comment-icon" src="/image/v2/sale-comment.png"></image>
+							</view>
+						</view>
+					</view>
+				</view>
+			</view>
+
+			<view class='content-right'>
+				<view class='item' wx:for="{{rightList}}" wx:key="id" catchtap='comment' data-objid='{{item.id}}'>
+					<image class='main-pic' mode='aspectFill' src='{{baseImageUrl+item.attachments[0]}}' style="height: 400rpx"></image>
+					<view class='footer'>
+						<view class='footer-item'>
+							<view class='user-info' catchtap="openUserInfo" data-id="{{item.poster.id}}">
+								<image class='icon avatar' style='width: 40rpx;' src='{{baseImageUrl+item.poster.avatar}}'></image>
+								<image class="right-avatar-border" src="/image/v2/border.png"></image>
+								<view class="user-name">{{item.poster.nickName}}</view>
+							</view>
+							<view class="introduce">{{item.introduce}}</view>
+							<view class='share-icon'>
+								<view>{{item.comment_number}}</view>
+								<image class="comment-icon" src="/image/v2/sale-comment.png"></image>
+							</view>
+						</view>
+					</view>
+				</view>
+			</view>
+		</view>
+	</view>
+	<view class="container" wx:if="{{index === 3}}">
+		<view class='content'>
+			<view class='content-left'>
+				<view class='item' wx:for="{{leftList}}" catchtap='comment' data-objid='{{item.id}}' wx:key="id">
+					<image class='main-pic' mode='aspectFill' src='{{baseImageUrl+item.attachments[0]}}' style="height: 516rpx"></image>
+					<view class='footer'>
+						<view class='footer-item'>
+							<view class='user-info' catchtap="openUserInfo" data-id="{{item.poster.id}}">
+								<image class='icon avatar' src='{{baseImageUrl+item.poster.avatar}}'></image>
+								<image class="left-avatar-border" src="/image/v2/border.png"></image>
+								<view class="user-name">{{item.poster.nickName}}</view>
+							</view>
+							<view class="introduce">{{item.introduce}}</view>
+							<view class='share-icon'>
+								<view>{{item.comment_number}}</view>
+								<image class="comment-icon" src="/image/v2/sale-comment.png"></image>
+							</view>
+						</view>
+					</view>
+				</view>
+			</view>
+
+			<view class='content-right'>
+				<view class='item' wx:for="{{rightList}}" wx:key="id" catchtap='comment' data-objid='{{item.id}}'>
+					<image class='main-pic' mode='aspectFill' src='{{baseImageUrl+item.attachments[0]}}' style="height: 400rpx"></image>
+					<view class='footer'>
+						<view class='footer-item'>
+							<view class='user-info' catchtap="openUserInfo" data-id="{{item.poster.id}}">
+								<image class='icon avatar' style='width: 40rpx;' src='{{baseImageUrl+item.poster.avatar}}'></image>
+								<image class="right-avatar-border" src="/image/v2/border.png"></image>
+								<view class="user-name">{{item.poster.nickName}}</view>
+							</view>
+							<view class="introduce">{{item.introduce}}</view>
+							<view class='share-icon'>
+								<view>{{item.comment_number}}</view>
+								<image class="comment-icon" src="/image/v2/sale-comment.png"></image>
+							</view>
+						</view>
+					</view>
+				</view>
+			</view>
+		</view>
+	</view>
+	<!-- <get-more-loading wx:if="{{showGeMoreLoadin}}"></get-more-loading>
+	<not-more wx:if="{{notDataTips && leftList.length != 0}}"></not-more> -->
+</view>
+</scroll-view>
+
+
+<view class='post-container'>
+  <view class='wall'></view>
+  <view class='post'>
+    <image src='/image/v2/index-poster.png' bindtap='post'></image>
+  </view>
+</view>

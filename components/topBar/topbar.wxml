@@ -1,0 +1,13 @@
+<!-- 自定义顶部栏 -->
+<view class="nav-bar" style="height:{{navBarHeight +20}}rpx; padding-top: {{menuTop}}px;">
+	<view class="back" wx:if="{{showIcon}}" bindtap="goBack">
+		<van-icon name="arrow-left" />
+	</view>
+	<view class="title" wx:if="{{!showTabSearch}}">
+		{{tabTitle}}
+	</view>
+	<input wx:if="{{showTabSearch}}" disabled class="search" placeholder="输入要找的表白墙"  style="height:{{menuHeight}}px; min-height:{{menuHeight}}px; line-height:{{menuHeight}}px; left:{{menuRight}}px; top:{{menuTop}}px;" bindtap="goSearchPage"></input>
+</view>
+
+<!-- 占位，高度与顶部栏一样
+<view style="height:{{navBarHeight}}px;"></view> -->

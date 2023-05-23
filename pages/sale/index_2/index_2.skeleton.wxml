@@ -1,0 +1,94 @@
+<!--
+此文件为开发者工具生成，生成时间: 2023/5/22下午10:09:15
+使用方法：
+在 D:\桌面\school_chat\pages\sale\index_2\index_2.wxml 引入模板
+
+```
+<import src="index_2.skeleton.wxml"/>
+<template is="skeleton" wx:if="{{loading}}" />
+```
+
+在 D:\桌面\school_chat\pages\sale\index_2\index_2.wxss 中引入样式
+```
+@import "./index_2.skeleton.wxss";
+```
+
+更多详细信息可以参考文档：https://developers.weixin.qq.com/miniprogram/dev/devtools/skeleton.html
+-->
+<template name="skeleton">
+  <view class="sk-container">
+    <scroll-view refresher-enabled="true" scroll-y="true" style="height: 95vh;" enable-back-to-top="true">
+      <view class="sale-container">
+        <view class="container">
+          <view class="content">
+            <view class="content-left">
+              <view is="components/sale/sale" style="width: 180px;">
+                <view class="sale--item" data-objid="23">
+                  <image class="sale--main-pic sk-image" mode="aspectFill" style="height:250px"></image>
+                  <view class="sale--footer">
+                    <view class="sale--footer-item">
+                      <view class="sale--user-info" data-id="undefined">
+                        <!-- <image class="sale--icon sale--avatar sk-image"></image> -->
+                        <image class="sale--left-avatar-border sk-image"></image>
+                        <view class="sale--user-name sk-transparent sk-text-14-2857-89 sk-text">傻逼</view>
+                      </view>
+                      <view class="sale--introduce sk-transparent sk-text-16-6667-947 sk-text">的</view>
+                      <view class="sale--share-icon">
+                        <view class="sk-transparent sk-opacity">0</view>
+                        <image class="sale--comment-icon sk-image"></image>
+                      </view>
+                    </view>
+                  </view>
+                </view>
+                <view class="sale--item" data-objid="21">
+                  <image class="sale--main-pic sk-image" mode="aspectFill" style="height:250px"></image>
+                </view>
+              </view>
+            </view>
+            <view class="content-right">
+              <view is="components/sale/sale" style="width: 180px;">
+                <view class="sale--item" data-objid="22">
+                  <image class="sale--main-pic sk-image" mode="aspectFill" style="height:180px"></image>
+                  <view class="sale--footer">
+                    <view class="sale--footer-item">
+                      <view class="sale--user-info" data-id="undefined">
+                        <!-- <image class="sale--icon sale--avatar sk-image"></image> -->
+                        <image class="sale--left-avatar-border sk-image"></image>
+                        <view class="sale--user-name sk-transparent sk-text-14-2857-919 sk-text">傻逼</view>
+                      </view>
+                      <view class="sale--introduce sk-transparent sk-text-16-6667-937 sk-text">d</view>
+                      <view class="sale--share-icon">
+                        <view class="sk-transparent sk-opacity">3</view>
+                        <image class="sale--comment-icon sk-image"></image>
+                      </view>
+                    </view>
+                  </view>
+                </view>
+                <view class="sale--item" data-objid="20">
+                  <image class="sale--main-pic sk-image" mode="aspectFill" style="height:180px"></image>
+                  <view class="sale--footer">
+                    <view class="sale--footer-item">
+                      <view class="sale--user-info" data-id="undefined">
+                        <!-- <image class="sale--icon sale--avatar sk-image"></image> -->
+                        <image class="sale--left-avatar-border sk-image"></image>
+                        <view class="sale--user-name sk-transparent sk-text-14-2857-617 sk-text">拒绝</view>
+                      </view>
+                      <view class="sale--introduce sk-transparent sk-text-16-6667-463 sk-text">打红红火火恍恍惚惚或或或或或或或或或或或红红火火恍恍惚惚或或或或或或或或或或或红红火火恍恍惚惚或或或或或或或或或或红红火火恍恍惚惚或或或或或或</view>
+                      <view class="sale--share-icon">
+                        <view class="sk-transparent sk-opacity">3</view>
+                        <image class="sale--comment-icon sk-image"></image>
+                      </view>
+                    </view>
+                  </view>
+                </view>
+                <view class="sale--item" data-objid="18">
+                  <image class="sale--main-pic sk-image" mode="aspectFill" style="height:180px"></image>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+</template>

@@ -1,0 +1,29 @@
+.nav-bar {
+	/* position: fixed; */
+	width: 100%;
+	top: 0;
+	color: #000;
+	background: #fdcd3f;
+	display: flex;
+	justify-content: flex-start;
+}
+.title {
+	margin: 10rpx 20rpx;
+	font-size: 32rpx;
+	
+}
+.back {
+	margin: 10rpx 10rpx;
+}
+.nav-bar .search {
+	margin-left: 40rpx;
+	width: 60%;
+	color: #333;
+	font-size: 14px;
+	background: #fff;
+	/* position: absolute; */
+	border-radius: 50px;
+	/* background: #efefef; */
+	padding-left: 14px;
+	transition: all 0.5s cubic-bezier(0.445, 0.05, 0.55, 0.95);
+}

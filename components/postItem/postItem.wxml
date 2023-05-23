@@ -1,0 +1,113 @@
+<wxs src="../../filter/formatStr.wxs" module="format" />
+<wxs src="../../filter/TimestampToDate.wxs" module="dateFr" />
+<view class="body-item" catchtap="goPostDetail" bindtouchmove="hiddenComment">
+	<view class="item-header">
+		<view class="avatar-item" catchtap="openUserInfo" data-id="{{item.poster.id}}">
+			<image class="avatar-border" src="/image/v2/border.png"></image>
+			<image class="user-avatar" src="{{baseImageUrl +item.poster.avatar}}"></image>
+		</view>
+		<view class="nickname-item" catchtap="openUserInfo" data-id="{{item.poster.id}}">
+			<view class="nickname-top">
+				<view class="poster-nickname">{{item.poster.nickName}}</view>
+				<image src="/image/v2/index-admin.png" wx:if="{{item.supertube == 1}}"></image>
+			</view>
+			<view class="nickname-bottom">
+				<view class="nickname-flag" wx:if="{{item.topic != ''}}">表白@</view>
+				<view class="bottom-name" wx:if="{{item.topic != ''}}">{{item.topic}}</view>
+			</view>
+		</view>
+		<view class="icon-item">
+			<image src="/image/v2/index-delete.png" id="{{item.id}}" data-index="{{index}}" wx:if="{{item.can_delete}}" catchtap='deletePost'></image>
+			<image src="{{item.follow ? '/image/v2/index-collect.png': '/image/v2/index-not-collect.png'}}" wx:if="{{item.isFollow}}" data-obj="{{item.poster.id}}" data-index="{{index}}" catchtap="cancelFolllow"></image>
+			<!-- <image src="/image/v2/index-not-collect.png" wx:if="{{!item.follow}}" data-obj="{{item.id}}" bindtap="follow"></image> -->
+		</view>
+	</view>
+	<view class="item-content">
+		<view class="item-content-word" wx:if="{{item.content}}">{{item.content}}</view>
+		<view class="item-content-image" wx:if='{{item.attachments.length>=1}}'>
+			<image mode="aspectFill" wx:for="{{item.attachments}}" wx:key="id" wx:for-item="sitem" src="{{baseImageUrl+sitem}}" catchtap='previewMoreImage' data-obj="{{item.attachments}}" id="{{baseImageUrl+sitem}}"></image>
+		</view>
+	</view>
+	<view class="item-footer">
+		<view class="date">{{dateFr.getDate(item.update_time, '-')}}</view>
+		<view class="letter-icon">
+			<image catchtap='showCommentInput' data-objid="{{item.id}}" data-objtype='1' src="/image/v2/index-topic-comment.png"></image>
+			<view>{{format.formatStr(item.comments.length)}}</view>
+		</view>
+		<view class="letter-icon">
+			<image data-obj="{{item.id}}" data-index="{{index}}" catchtap='praisePost' src="{{item.isLike? '/image/v2/index-like.png' : '/image/v2/index-topic-zan.png'}}"></image>
+			<view>{{format.formatStr(item.praise_number)}}</view>
+		</view>
+	</view>
+	<!-- 评论 -->
+	<view class="comment-content">
+		<view class="praise-content" wx:if="{{item.praisesInfo.length > 0}}">
+			<view class="praise-left">
+				<image src="/image/v2/index-like.png"></image>
+			</view>
+			<view class="praise-right">
+				<view class="praise-item" bindtap="openUserInfo" data-id="{{item.user_id}}" wx:for="{{item.praisesInfo}}" wx:key="id">
+					<image src="{{baseImageUrl +item.avatar}}"></image>
+					<view class="praise-name">{{item.nickName}}</view>
+				</view>
+			</view>
+		</view>
+		<view class="comment-list" wx:if="{{item.comments.length > 0}}">
+			<view class="comment-left">
+				<image src="/image/v2/fill-comment.png"></image>
+			</view>
+			<view class="comment-right" wx:if="{{!isGoDetailt}}">
+				<view class="comment-item" wx:if="{{!sub.ref_comment}}" wx:for="{{item.comments}}" wx:key="id" wx:for-item="sub" catchtap="commentOtherComment" bindlongpress="{{item.can_delete?'deleteComment':''}}" data-refid="{{sub.comment_user.id}}" data-objid="{{sub.id}}" data-index="{{index}}">
+					<!-- <image src="{{baseImageUrl +sub.comment_user.avatar}}"></image> -->
+					<view class="comment-name">{{sub.comment_user.nickName}}</view>
+					<view class="comment-word">：{{sub.content}}</view>
+					<view class="sub_comment" wx:for="{{sub.sub_comment}}" wx:key="this" wx:for-item="subs" data-commentId="{{item.id}}">
+						<!-- <image src="{{baseImageUrl +subs.comment_user.avatar}}"></image> -->
+						<view class="sub_comment_user">{{subs.comment_user.nickName }}</view>
+						<view style="word-break: keep-all">回复</view>
+						<!-- <image src="{{baseImageUrl +subs.ref_commenter.avatar}}"></image> -->
+						<view class="ref_commenter">{{subs.ref_commenter.nickName}}</view>
+						<view class="sub_content">：{{subs.content}}</view>
+					</view>
+				</view>
+			</view>
+			<view class="comment-right" wx:if="{{isGoDetailt}}">
+				<view class="commenter-item" wx:if="{{!sub.ref_comment}}" wx:for="{{item.comments}}" wx:key="id" wx:for-item="sub" catchtap="commentOtherComment" bindlongpress="{{item.can_delete?'deleteComment':''}}" data-refid="{{sub.comment_user.id}}" data-objid="{{sub.id}}" data-index="{{index}}">
+					<view class="commnets-item">
+						<image src="{{baseImageUrl +sub.comment_user.avatar}}"></image>
+						<view class="commer-info">
+							<view class="top">
+								<view class="commenter-name">{{sub.comment_user.nickName}}</view>
+								<view class="time">
+									{{dateFr.getDate(sub.created_at, '-')}}
+								</view>
+							</view>
+							<view class="commenter-word">{{sub.content}}</view>
+						</view>
+
+					</view>
+					<view class="commnets-reitem" wx:for="{{sub.sub_comment}}" wx:key="this" wx:for-item="subs" data-commentId="{{item.id}}">
+						<image src="{{baseImageUrl +subs.comment_user.avatar}}"></image>
+						<view class="commenter-info">
+							<view class="nicname_time">
+								<view class="sub_comment_user">{{subs.comment_user.nickName }}</view>
+								<view class="times">
+									{{dateFr.getDate(subs.created_at, '-')}}
+								</view>
+							</view>
+							<view class="sub_commenter_info">
+								<view class="sub_messge">
+									<view class="ref">回复</view>
+									<!-- <image src="{{baseImageUrl +subs.ref_commenter.avatar}}"></image> -->
+									<view class="ref_commenter">{{subs.ref_commenter.nickName}}：</view>
+								</view>
+								<view class="sub_content">{{subs.content}}</view>
+							</view>
+						</view>
+
+					</view>
+				</view>
+			</view>
+		</view>
+	</view>
+</view>

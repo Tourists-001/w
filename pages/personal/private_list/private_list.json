@@ -1,0 +1,8 @@
+{
+    "usingComponents": {
+        "van-swipe-cell": "@vant/weapp/swipe-cell/index",
+        "topBar": "/components/topBar/topbar",
+        "van-cell": "@vant/weapp/cell/index",
+        "van-cell-group": "@vant/weapp/cell-group/index"
+    }
+}

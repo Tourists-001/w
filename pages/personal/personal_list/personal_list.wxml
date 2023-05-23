@@ -1,0 +1,35 @@
+<topBar showTabSearch="{{showTabSearch}}" showIcon="{{true}}"></topBar>
+
+<view class="follow_container">
+    <scroll-view style="height: 90vh;" scroll-y class="scroll_view">
+     <view class="item" wx:for="{{List}}" wx:key="this">
+        <view class="content">
+            <view class="left">
+                <view class="avatar-view">
+                    <image src="/image/v2/border.png" role="img" class="message-avatar-border"></image>
+                    <image src="{{baseImageUrl + item.avatar}}" role="img" class="avatar"></image>
+                </view>
+                <view class="info">
+            <view class="nickName">
+                {{item.nickName}}
+            </view>
+            <view class="desc" wx:if="{{type == 'fans'}}">
+               {{item.type == 0? '他关注了你': '她是你的朋友'}}
+            </view>
+            <view class="desc" wx:if="{{type == 'follow'}}">
+               {{item.type == 0? '你关注了他': '她是你的朋友'}}
+            </view>
+           </view>
+            </view>
+           <view class="right">
+              <view class="name" wx:if="{{type == 'follow'}}">
+                {{item.type == 0? '关注': '取消关注'}}
+              </view>
+              <view class="name" wx:if="{{type == 'fans'}}">
+                {{item.type == 0? '回关': '取消关注'}}
+              </view>
+           </view>
+        </view>
+     </view>
+    </scroll-view>
+</view>

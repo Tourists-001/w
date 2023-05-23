@@ -1,0 +1,19 @@
+<topBar showTabSearch="{{showTabSearch}}" showIcon="{{showIcon}}"></topBar>
+<view class="input-container">
+	<input type="text" class="search" placeholder="请输入内容" bindinput="getPostValue"></input>
+	<view class='search-image'>
+		<image mode="" src='/image/v2/index-search.png'></image>
+	</view>
+</view>
+
+<newHeader bindrefresherrefreshList="refresherrefreshList" isLoading="{{isLoading}}" bindscrolltolowerList="scrolltolowerList">
+	<view slot="all">
+		<postItem class="post_container" wx:for="{{allList}}" item='{{item}}' index='{{index}}' wx:key="this" bindgoPostDetail="goPostDetailFunc"></postItem>
+	</view>
+	<view slot="hot">
+		<postItem class="post_container" wx:for="{{hotList}}" item='{{item}}' index='{{index}}' wx:key="this" bindgoPostDetail="goPostDetailFunc"></postItem>
+	</view>
+	<view slot="prise">
+		<postItem class="post_container" wx:for="{{priseList}}" item='{{item}}' index='{{index}}' wx:key="this" bindgoPostDetail="goPostDetailFunc"></postItem>
+	</view>
+</newHeader>

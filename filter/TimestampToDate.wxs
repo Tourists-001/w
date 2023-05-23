@@ -1,0 +1,57 @@
+var DateFr = {
+
+	getDate: function (time, splitStr) {
+		var time = +time
+		//  console.log(time);
+		if (!time) return '';
+		var date = getDate(time);
+		var M = date.getMonth() + 1;
+		var y = date.getFullYear();
+		var d = date.getDate();
+		var t = date.getHours()
+		var m = date.getMinutes()
+		var s = date.getSeconds()
+		if (M < 10) M = "0" + M;
+		if (d < 10) d = "0" + d;
+		if (t < 10) t = "0" + t;
+		if (m < 10) t = "0" + m;
+		if (s < 10) t = "0" + s;
+		if (splitStr)
+			return  M + splitStr + d + ' ' + t + ':' + m;
+		else
+			return {
+				y: y,
+				M: M,
+				d: d
+			};
+	},
+	formatDate: function (time, splitStr) {
+		var time = +time
+		//  console.log(time);
+		if (!time) return '';
+		var date = getDate(time);
+		var M = date.getMonth() + 1;
+		var y = date.getFullYear();
+		var d = date.getDate();
+		var t = date.getHours()
+		var m = date.getMinutes()
+		var s = date.getSeconds()
+		if (M < 10) M = "0" + M;
+		if (d < 10) d = "0" + d;
+		if (t < 10) t = "0" + t;
+		if (m < 10) t = "0" + m;
+		if (s < 10) t = "0" + s;
+		if (splitStr)
+			return y + splitStr + M
+		else
+			return {
+				y: y,
+				M: M,
+			};
+	}
+}
+
+module.exports = {
+	getDate: DateFr.getDate,
+	formatDate: DateFr.formatDate
+}

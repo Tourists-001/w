@@ -1,0 +1,7 @@
+{
+    "usingComponents": {
+        "topBar": "/components/topBar/topbar",
+        "header": "/components/header/header",
+        "get-more-loading": "/components/get-more-loading/get-more-loading"
+    }
+}

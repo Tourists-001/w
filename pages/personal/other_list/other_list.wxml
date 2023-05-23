@@ -1,0 +1,136 @@
+<topBar showTabSearch="{{false}}" showIcon="{{true}}"></topBar>
+<scroll-view class="container" scroll-y refresher-enabled refresher-triggered="{{isRefresh}}" bindrefresherrefresh="refresherpulling">
+    <!--背景-->
+    <view class="bg-content">
+        <image class="bg" src="{{bgImg}}"></image>
+        <view class="my-word" wx:if="{{user.sign}}">
+            <view class="my-word-content">{{user.sign}}</view>
+        </view>
+        <view class="bg-null"></view>
+        <view class="avatar-container" wx:if="{{!showLoginButton}}">
+            <image class="avatar" bindtap="gochangeInfo" src='{{baseImageUrl + user.avatar}}'></image>
+            <image class="header-avatar-border" src="/image/v2/border.png"></image>
+            <image class="boy" wx:if="{{user.gender == 1}}" src="/image/v2/boy.png"></image>
+            <image class="girl" wx:if="{{user.gender == 2}}" src="/image/v2/girl.png"></image>
+        </view>
+    </view>
+    <!--个人信息-->
+    <view class="user-info">
+        <view class="fans" data-type="fans">
+            <view>{{user.fans_number}}</view>
+            <view>粉丝</view>
+        </view>
+        <view class="info">
+            <view class="nickname">
+                <view wx:if="{{!showLoginButton}}" class="nickname-data">{{user.nickName}}</view>
+            </view>
+            <view class="follow-icon">
+                <view class="icon"  bindtap="priseOtherUser" data-type="{{user.isPrise}}">
+                    {{user.isPrise? '取消关注': '关注'}}
+                </view>
+                <view class="icon" bindtap="goMessagePage" data-name="{{user.nickName}}" data-user_id="{{user.id}}">
+                    私信
+                </view>
+            </view>
+
+        </view>
+
+        <view class="follow" data-type="follow">
+            <view>{{user.praise_number}}</view>
+            <view>关注</view>
+        </view>
+    </view>
+
+    <!-- 步数信息 -->
+    <view class="user-info-content">
+        <view class="info-top">
+            <view class="today-step user-info-item">
+                <view class="user-info-image">
+                    <view class="image-content p1">
+                        <image src="/image/v2/p1.png"></image>
+                    </view>
+                </view>
+                <view class="user-info-data">
+                    <view class="user-info-flag">今日步数</view>
+                    <view class="user-info-word">{{user.run_data}}</view>
+                </view>
+            </view>
+            <view class="today-rand user-info-item">
+                <view class="user-info-image">
+                    <view class="image-content p2">
+                        <image src="/image/v2/p2.png"></image>
+                    </view>
+                </view>
+                <view class="user-info-data">
+                    <view class="user-info-flag">今日排名</view>
+                    <view class="user-info-word">{{user.order}}</view>
+                </view>
+            </view>
+        </view>
+        <view class="info-top">
+            <view class="today-step user-info-item">
+                <view class="user-info-image">
+                    <view class="image-content p3">
+                        <image src="/image/v2/p3.png"></image>
+                    </view>
+                </view>
+                <view class="user-info-data">
+                    <view class="user-info-flag">帖子动态</view>
+                    <view class="user-info-word">{{newMessageNumber}}</view>
+                </view>
+            </view>
+            <view class="today-rand user-info-item">
+                <view class="user-info-image">
+                    <view class="image-content p4">
+                        <image src="/image/v2/p4.png"></image>
+                    </view>
+                </view>
+                <view class="user-info-data">
+                    <view class="user-info-flag">打卡天数</view>
+                    <view class="user-info-word">{{user.clock_num}}</view>
+                </view>
+            </view>
+        </view>
+    </view>
+
+    <!-- 动态详情 -->
+    <view class="poster-container">
+        <view class="poster-data">
+            <view class="poster-data-item">
+                <view data-type="1" bindtap="select" class="select-tab">表白墙</view>
+                <view class='{{selectPoster==1?"select-tab-bootom":"not-select-tab-bootom"}}'></view>
+            </view>
+            <view class="poster-data-item">
+                <view data-type="2" bindtap="select" class="select-tab">卖舍友</view>
+                <view class='{{selectPoster==2?"select-tab-bootom":"not-select-tab-bootom"}}'></view>
+            </view>
+        </view>
+    </view>
+
+    <!-- 表白墙列表 -->
+    <view class="body-list" wx:if="{{selectPoster==1}}">
+        <postItem style="width: 100vw;display: flex;justify-content: center;" class="post_container" wx:for="{{allList}}" item='{{item}}' index='{{index}}' wx:key="this" bindcancelFollowCallBack="cancelFollowCallBack" binddeletePostItem="deletePostItemFunc"></postItem>
+    </view>
+
+    <!-- 卖舍友 -->
+    <view class='sale_container' wx:if="{{selectPoster==2}}" bindtouchmove="hiddenComment">
+        <view class='content'>
+            <view class='content-left'>
+                <sale List="{{leftList}}" height="{{500}}" style="width: 360rpx;"></sale>
+            </view>
+            <view class='content-right'>
+                <sale List="{{rightList}}" height="{{360}}" style="width: 360rpx;"></sale>
+            </view>
+        </view>
+    </view>
+
+
+
+    <!-- 输入框 -->
+    <view class='comment-input-container' wx:if="{{showCommentInput}}">
+        <textarea placeholder="评论" auto-focus maxlength="1024" cursor-spacing="15" fixed="true" auto-height bindinput='getCommentContent' />
+        <view class='send-button' bindtap='sendComment'>
+            <view>发送</view>
+        </view>
+    </view>
+</scroll-view>

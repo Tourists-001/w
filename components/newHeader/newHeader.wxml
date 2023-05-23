@@ -1,0 +1,21 @@
+<view class="header_container">
+	<view class="navigation-item" wx:for="{{list}}" wx:key="this">
+		<view data-type="{{index}}" bindtap="selected" class="select-tab">{{item.type}}</view>
+		<view class="{{selectIndex == index ? 'select-tab-bootom' : ''}}"></view>
+	</view>
+</view>
+<view class="post_container">
+	<!-- <header bindselected="changeSelect" selectIndex="{{selectIndex}}"></header> -->
+	<view class="post_content">
+		<swiper class="container" bindchange="swiperchange" current="{{selectIndex}}">
+			<block wx:for="{{list}}" wx:key="this" style="height: 80vh;">
+				<swiper-item>
+					<scroll-view style="height:80vh;" scroll-y refresher-enabled bindrefresherrefresh="refresherrefresh" refresher-triggered="{{isLoading}}" scrolltolower="5" bindscrolltolower="scrolltolower" scroll-top="{{scrollTop}}">
+						<slot name="{{item.name}}"></slot>
+						<view style="width:100vw; height: 70rpx;"></view>
+					</scroll-view>
+				</swiper-item>
+			</block>
+		</swiper>
+	</view>
+</view>

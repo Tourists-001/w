@@ -1,0 +1,9 @@
+<view class="navigation">
+	<view class="vant_tab" style="width: 100vw">
+		<van-tabs swipeable line-width="30px" color="#fdcd3f" line-height="5px" animated bind:change="change">
+			<van-tab wx:for="{{list}}" title="{{item.type}}" wx:key="this" title-style="font-size: 32rpx">
+				<slot name="{{item.name}}"></slot>
+			</van-tab>
+		</van-tabs>
+	</view>
+</view>

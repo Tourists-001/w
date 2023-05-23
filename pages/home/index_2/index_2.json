@@ -1,0 +1,15 @@
+{
+    "usingComponents": {
+        "van-tab": "@vant/weapp/tab/index",
+        "van-tabs": "@vant/weapp/tabs/index",
+        "header": "/components/header/header",
+        "topBar": "/components/topBar/topbar",
+        "search": "/components/search/search",
+        "get-more-loading": "/components/get-more-loading/get-more-loading",
+        "commentInput": "/components/commentInput/commentInput",
+        "message": "/components/message/message",
+        "van-skeleton": "@vant/weapp/skeleton/index",
+        "newHeader": "/components/newHeader/newHeader",
+        "postItem": "/components/postItem/postItem"
+    }
+}

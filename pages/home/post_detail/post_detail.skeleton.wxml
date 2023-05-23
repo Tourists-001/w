@@ -1,0 +1,63 @@
+<!--
+此文件为开发者工具生成，生成时间: 2023/5/22下午10:02:14
+使用方法：
+在 D:\桌面\school_chat\pages\home\post_detail\post_detail.wxml 引入模板
+
+```
+<import src="post_detail.skeleton.wxml"/>
+<template is="skeleton" wx:if="{{loading}}" />
+```
+
+在 D:\桌面\school_chat\pages\home\post_detail\post_detail.wxss 中引入样式
+```
+@import "./post_detail.skeleton.wxss";
+```
+
+更多详细信息可以参考文档：https://developers.weixin.qq.com/miniprogram/dev/devtools/skeleton.html
+-->
+<template name="skeleton">
+  <view class="sk-container">
+    <scroll-view scroll-y="true" class="wall-container">
+      <view is="components/postItem/postItem" class="post_container">
+        <view class="postItem--body-item">
+          <view class="postItem--item-header">
+            <view class="postItem--avatar-item" data-id="20">
+              <image class="postItem--avatar-border sk-image"></image>
+              <image class="postItem--user-avatar sk-image"></image>
+            </view>
+            <view class="postItem--nickname-item" data-id="20">
+              <view class="postItem--nickname-top">
+                <view class="postItem--poster-nickname sk-transparent sk-text-12-5000-228 sk-text">拒绝</view>
+              </view>
+              <view class="postItem--nickname-bottom">
+                <view class="postItem--nickname-flag sk-transparent sk-image">表白@</view>
+                <view class="postItem--bottom-name sk-transparent sk-text-14-2857-414 sk-text">那就</view>
+              </view>
+            </view>
+            <view class="postItem--icon-item">
+              <image data-index="0" data-obj="20" class="sk-image"></image>
+            </view>
+          </view>
+          <view class="postItem--item-content">
+            <view class="postItem--item-content-word sk-transparent sk-text-14-2857-73 sk-text">牛逼</view>
+            <view class="postItem--item-content-image">
+              <image data-obj="upload/1683988153426-fc3qvo.jpg" id="80c0906c--http://192.168.0.103:3001/upload/1683988153426-fc3qvo.jpg" mode="aspectFill" class="sk-image"></image>
+            </view>
+          </view>
+          <view class="postItem--item-footer">
+            <view class="postItem--date sk-transparent sk-text-14-2857-389 sk-text">05-13 22:29</view>
+            <view class="postItem--letter-icon">
+              <image data-objid="39" data-objtype="1" class="sk-image"></image>
+              <view class="sk-transparent sk-opacity">0</view>
+            </view>
+            <view class="postItem--letter-icon">
+              <image data-index="0" data-obj="39" class="sk-image"></image>
+              <view class="sk-transparent sk-opacity">0</view>
+            </view>
+          </view>
+          <view class="postItem--comment-content"></view>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+</template>

@@ -1,0 +1,16 @@
+<view class="login_container">
+	<topBar></topBar>
+	<view>
+        <view class='header'>
+            <image src='/image/wx_login.png'></image>
+        </view>
+ 
+        <view class='content'>
+            <view>申请获取以下权限</view>
+            <text>获得你的公开信息(昵称，头像等)</text>
+        </view>
+        <button loading="{{islaoding}}" class='bottom'  type='primary' open-type="getUserInfo" lang="zh_CN" bindgetuserinfo="bindGetUserInfo">
+           {{loginInfo}}
+		</button>
+	</view>
+</view>

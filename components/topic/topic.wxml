@@ -1,0 +1,29 @@
+<view class="body-content" wx:if="{{showTopic}}">
+  <view class="topic-content" bindtap='openTopic' data-id="{{topic.id}}" wx:if="{{showTopic}}">
+    <view class="topic-title">
+      <view class="title">
+        <view>今日话题</view>
+      </view>
+    </view>
+    <image class="topic-image" mode="aspectFill" src="{{topic.attachments[0]}}"></image>
+    <view class="topic-data">
+      <view class="topic-data-content">{{topic.content}}</view>
+    </view>
+    <view class="topic-bottom">
+      <view class="topic-bottom-content">
+        <view class="topic-bottom-left">
+          <image src="/image/v2/index-browse.png"></image>
+          <view>{{format.formatStr(topic.view_number)}}次</view>
+        </view>
+        <view class="topic-bottom-middle" data-id="{{topic.id}}" catchtap='praiseTopic'>
+          <image src="{{liked ? '/image/v2/index-like.png' : '/image/v2/index-topic-zan.png'}}"></image>
+          <view>{{format.formatStr(paraiseNumber)}}</view>
+        </view>
+        <view class="topic-bottom-right">
+          <image src="/image/v2/index-topic-comment.png"></image>
+          <view>{{format.formatStr(topic.comment_number)}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

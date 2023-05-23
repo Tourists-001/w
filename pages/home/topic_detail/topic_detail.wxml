@@ -1,0 +1,103 @@
+<wxs src="../../../filter/formatStr.wxs" module="format" />
+<topBar showIcon="{{true}}"></topBar>
+<scroll-view style="height: 85vh;" scroll-y wx:if="{{topic}}" bindscrolltolower="scrollPage" bindtap="hiddenComment">
+	<view class="topic_container">
+	<view class="topic-content">
+		<view class="topic-title">
+			<view class="title">
+				<view>今日话题</view>
+			</view>
+		</view>
+		<image class="topic-image" mode="aspectFill" src="{{ baseImgUrl +topic.attachments[0]}}"></image>
+		<view class="topic-data">
+			<view class="topic-data-content">{{topic.content}}</view>
+		</view>
+	</view>
+	<view class='user-comment'>
+		<view class='comment-wall'>
+			<view class='comment-header'>
+				<view class='comment-title'>
+					<view>话题讨论</view>
+					<view class="title-border"></view>
+				</view>
+				<view class='zan coment-icon'>
+					<view class="topic-bottom-content">
+						<view class="topic-bottom-left">
+							<image src="/image/v2/index-browse.png"></image>
+							<view>{{format.formatStr(topic.view_number)}}次</view>
+						</view>
+						<view class="topic-bottom-middle">
+							<image src="{{liked ? '/image/v2/index-like.png' : '/image/v2/index-topic-zan.png'}}" data-id="{{id}}" bindtap='praiseTopic'></image>
+							<view>{{format.formatStr(paraiseNumber)}}</view>
+						</view>
+						<view class="topic-bottom-right">
+							<image src="/image/v2/index-topic-comment.png" bindtap='openCommentTopic' data-id="{{id}}"></image>
+							<view>{{format.formatStr(topic.comment_number)}}</view>
+						</view>
+					</view>
+				</view>
+			</view>
+		</view>
+
+		<view class='comment-item' wx:for="{{comments}}" wx:key="this">
+			<view class='left'>
+				<view class='user-image' bindtap="openUserInfo" data-id="{{item.commenter.id}}">
+					<image class="avatar-border" src="/image/v2/border.png"></image>
+					<image class="user-avatar" src='{{item.commenter.avatar}}'></image>
+				</view>
+				<view class='comment-name'>
+					<view bindtap="openUserInfo" data-id="{{item.commenter.id}}">{{item.commenter.nickname}}</view>
+					<image wx:if="{{item.can_delete}}" data-refid="{{item.id}}" bindtap="removeComment" class="comment-delete-icon" src="/image/v2/index-delete.png"></image>
+				</view>
+			</view>
+			<view class='right'>
+				<view class='content right-item'>
+					{{item.content}}
+				</view>
+
+				<view class='create_at right-item'>
+					<view class='time-deleted'>
+						<view>{{item.created_at}}</view>
+					</view>
+					<view class='comment-icon'>
+						<image src='/image/v2/index-topic-comment.png' catchtap='showCommentInput' data-objid="{{item.id}}" data-index="{{index}}"></image>
+					</view>
+				</view>
+				<view class='comment-user-wall right-item' wx:if='{{item.sub_comments.length > 0}}'>
+					<view class='comment-user-container' wx:for="{{item.sub_comments}}" wx:key="this" wx:for-item="sub">
+						<view class='comment-wall-item' wx:if="{{!sub.ref_comment}}">
+							<view class='comment-user-container'>
+								<view class="comment-user inline-item" data-objid="{{item.id}}" data-type='5' data-refid="{{sub.id}}">
+									<image class="comment-user-avatar" src='{{sub.commenter.avatar}}'></image>
+									<view class="comment-nickname">{{sub.commenter.nickname}}：</view>
+									<view class='inline-item'>{{sub.content}}</view>
+								</view>
+							</view>
+						</view>
+
+						<!-- <view class='comment-ref-user-container' catchtap="{{sub.can_delete?'deleteComment':'showCommentInput'}}" data-objid="{{item.id}}" data-type='5' data-refid="{{sub.id}}" wx:if="{{sub.ref_comment}}">
+							<view class="comment-user inline-item">
+								{{sub.commenter.nickname}}
+							</view>
+							<view class='inline-item'>回复</view>
+							<view class="comment-user inline-item">
+								{{sub.ref_comment.refCommenter.nickname}}：
+							</view>
+							<view class='inline-item'>{{sub.content}}</view>
+						</view> -->
+					</view>
+				</view>
+			</view>
+		</view>
+	</view>
+</view>
+</scroll-view>
+
+<view class='comment-input-container' wx:if="{{showCommentInput}}">
+	<textarea class="input-data" maxlength="1024" placeholder="评论" cursor-spacing="15" style="height: 70rpx;" fixed="true" auto-height bindinput='getCommentContent' />
+	<view class='send-button' bindtap='postComment'>
+		<view>发送</view>
+	</view>
+</view>
+<!-- 加载更多 -->
+<get-more-loading wx:if="{{isBottom}}" showGeMoreLoadin="{{showGeMoreLoadin}}" />

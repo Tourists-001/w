@@ -1,0 +1,36 @@
+<topBar showIcon="{{true}}"  showTabSearch="{{false}}" ></topBar>
+<wxs src="../../../filter/TimestampToDate.wxs" module="dateFr" />
+
+<view class='container' style="height:100vh;background-image: url('/image/Group.png')">
+	<view class='step-number-container' wx:if="{{steps.length >0}}">
+		<!-- 头部 -->
+		<view class='header'>
+			<view class='header-content'>
+				<view class='step-content'>
+					<view class='today-step'>
+						<view class='label'>今天</view>
+						<view class='step'>{{todayStep}}</view>
+					</view>
+					<view class='total-step'>
+						<view class='label'>累计</view>
+						<view class='step'>{{totalStep}}万</view>
+					</view>
+				</view>
+			</view>
+		</view>
+
+		<!-- 具体步数内容 -->
+		<view class='content-container'>
+			<view class='content step-data-content'>
+				<view class='step-data-item' wx:for="{{steps}}" wx:key="id">
+					<view class='step-data-left'>
+						<view class='date'>{{dateFr.getDate(item.timestamp * 1000, '-')}}</view>
+					</view>
+					<view class='step-right'>
+						<view class='step-number'>{{item.step}}</view>
+					</view>
+				</view>
+			</view>
+		</view>
+	</view>
+</view>

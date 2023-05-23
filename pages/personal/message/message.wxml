@@ -1,0 +1,41 @@
+<wxs src="../../../filter/TimestampToDate.wxs" module="dateFr" />
+<topBar showTabSearch="{{showTabSearch}}" showIcon="{{true}}" tabTitle="动态"></topBar>
+
+<scroll-view scroll-y="true" style="height:{{screenMinHeight}}px;">
+	<view class="container-content">
+		<view class='message-item' wx:for="{{messageList}}" wx:key="id">
+			<view class='item' bindtap="opendDetail" data-id="{{item.post_id=='' ? item.sale_id : item.post_id }}" data-type="{{item.type}}" data-message="{{item.id}}" data-index="{{index}}">
+				<view class='left'>
+					<view class="avatar-view">
+						<image class="message-avatar-border" src="/image/v2/border.png"></image>
+						<image class="avatar" src='{{baseImageUrl + item.avatar}}'></image>
+					</view>
+				</view>
+				<view class='content'>
+					<view class='username'>
+						{{item.nickName}}
+					</view>
+					<view class='message' wx:if="{{!item.content}}">收藏了你的{{item.type == 'post_prise'? '表白墙': '卖室友'}}</view>
+					<view class='message' wx:if="{{item.content&&item.type == 'post_comment'}}">
+						评论：{{item.content}}</view>
+						<view class='message' wx:if="{{item.content&&item.type == 'sale_comment'}}">
+						评论：{{item.content}}</view>
+					<view class='message' wx:if="{{item.content&&item.type == 'post_sub_comment'}}">
+						回复你：{{item.content}}</view>
+					<view class='created_at'>{{dateFr.getDate(item.time, '-')}}</view>
+				</view>
+				<view class='right'>
+					<view class='image'>
+						<image mode='aspectFill' src='{{baseImageUrl+item.imgUrl[0]}}'></image>
+					</view>
+				</view>
+			</view>
+			<view class="message_falg" wx:if="{{!item.is_use}}"></view>
+		</view>
+	</view>
+</scroll-view>
+<view class="read_message">
+	<view class="read_item" bindtap="readMessageAll">
+		已读
+	</view>
+</view>

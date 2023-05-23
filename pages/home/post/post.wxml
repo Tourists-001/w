@@ -1,0 +1,27 @@
+<topBar  showTabSearch="{{showTabSearch}}" showIcon="{{showIcon}}"></topBar>
+<view class='post-container container'>
+  <view class='form'>
+    <textarea 
+        maxlength="1024"
+        class='textarea-content'
+        placeholder="爱情属于勇敢的人"    
+        bindinput="getTextContent"/>
+    <view class='image-form'>
+      <van-uploader image-fit="aspectFill" bind:delete="deleteImg" file-list="{{ fileList }}" multiple max-count="9" bind:after-read="afterRead" />
+    </view>  
+  </view>
+
+<view class='middle'>
+  <view class='location'>
+    <input class='like-content' 
+           placeholder="心仪的对象" 
+           bindinput="getName"/>
+  </view>
+</view>
+
+  <view class='button-container'>
+    <view bindtap='post' disabled='{{!canPost}}' class="button"><view>发表</view></view>
+  </view>
+
+</view>
+

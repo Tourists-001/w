@@ -1,0 +1,27 @@
+<topBar  showTabSearch="{{false}}" showIcon="{{true}}"></topBar>
+<view class="message-container">
+  
+  <view class="message-content">
+  <view class="settle-info">
+      <!-- <image class="user-avatar-border" src="/image/v2/border.png"></image> -->
+      <button class="avatar-wrapper" open-type="chooseAvatar" bind:chooseavatar="onChooseAvatar">
+        <image class="settle-avatar" src="{{avatar}}" style="width: 100%;height: 100%;"></image>
+      </button> 
+      <view class="nickname-input">
+        <view class="nickname-tab">昵称</view>
+        <input type="nickname" class="nickname-data-input" bindinput="getNickname" value='{{nickName}}' placeholder="请输入昵称"/>
+      </view>
+
+      <view class="set-input">
+        <view class="set-ttile">个性签名</view>
+        <textarea 
+        maxlength="128"
+        value='{{sign}}'
+        class='textarea-content'
+        placeholder=""    
+        bindinput="getTextContent"/>
+      </view>
+      <view class="set-save"><view class="set-save-button" bindtap="signatureSave"><view>保存修改</view></view></view>
+    </view>
+</view>
+</view>

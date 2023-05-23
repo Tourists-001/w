@@ -1,0 +1,17 @@
+<view class='item' wx:for="{{List}}" catchtap='comment' data-objid='{{item.id}}' wx:key="id">
+	<image class='main-pic' mode='aspectFill' src='{{baseImageUrl+item.attachments[0]}}' style="height:{{height}}rpx"></image>
+	<view class='footer'>
+		<view class='footer-item'>
+			<view class='user-info' catchtap="openUserInfo" data-id="{{item.poster.id}}">
+				<image class='icon avatar' src='{{baseImageUrl +item.poster.avatar}}'></image>
+				<image class="left-avatar-border" src="/image/v2/border.png"></image>
+				<view class="user-name">{{item.poster.nickName}}</view>
+			</view>
+			<view class="introduce">{{item.introduce}}</view>
+			<view class='share-icon'>
+				<view>{{item.comment_number}}</view>
+				<image class="comment-icon" src="/image/v2/sale-comment.png"></image>
+			</view>
+		</view>
+	</view>
+</view>

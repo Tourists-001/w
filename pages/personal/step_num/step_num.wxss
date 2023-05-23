@@ -1,0 +1,161 @@
+.rand-container {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+}
+
+.rand-container .rand-content {
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.rank-item-list {
+	width: 90%;
+	display: flex;
+	flex-direction: column;
+	background: rgba(255, 255, 255, 0.90);
+	border-radius: 40rpx;
+	margin-top: 50rpx;
+	margin-bottom: 50rpx;
+}
+
+.my-rank {
+	height: 250rpx;
+	width: 90%;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	background: rgba(255, 255, 255, 0.90);
+	border-radius: 40rpx;
+	margin-top: 50rpx;
+}
+
+.my-rand-left {
+	width: 50%;
+}
+
+.my-rand-right {
+	width: 50%;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	justify-content: center;
+}
+
+.my-rank-word {
+	font-size: 30rpx;
+	font-family: OPPOSans, OPPOSans-Medium;
+	font-weight: 700;
+	color: #000000;
+}
+
+.my-rank-num {
+	font-size: 70rpx;
+	font-family: OPPOSans, OPPOSans-Medium;
+	font-weight: 700;
+	color: #E74C3C;
+}
+
+.my-rank-image image {
+	width: 250rpx;
+	height: 250rpx;
+}
+
+.my-rank-info {
+	width: 250rpx;
+	height: 250rpx;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	font-size: 80rpx;
+	font-weight: 700;
+}
+
+.rand-item .rand {
+	width: 90%;
+	display: flex;
+	flex-direction: row;
+	padding: 20rpx 20rpx;
+}
+
+.rand-item .rand-left {
+	width: 70%;
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	align-items: center;
+}
+
+.rand-left .rand-left-item {
+	margin: 0rpx 20rpx;
+	font-size: 28rpx;
+	font-family: OPPOSans, OPPOSans-Medium;
+	font-weight: 700;
+	width: 100rpx;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.rand-left .rand-avatar {
+	width: 80rpx;
+	height: 80rpx;
+	border-radius: 20rpx;
+}
+
+.rand-item .rand-right {
+	width: 30%;
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-end;
+	align-items: center;
+	font-size: 50rpx;
+	color: #FBAD67;
+}
+
+.rank-avatar {
+	width: 80rpx;
+	height: 80rpx;
+	border-radius: 20rpx;
+	margin-left: 20rpx;
+}
+
+.rand-index {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	font-size: 40rpx;
+	font-family: OPPOSans, OPPOSans-Heavy;
+	font-weight: 800;
+	color: #000000;
+}
+
+.rank-image {
+	width: 120rpx;
+	height: 120rpx;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+.rank-title {
+	width: 90%;
+	display: flex;
+	flex-direction: row;
+	font-size: 30rpx;
+	color: gainsboro;
+	padding: 10rpx 0rpx;
+}
+
+.rand-step {
+	color: #E74C3C;
+	font-size: 40rpx;
+	font-family: OPPOSans, OPPOSans-Heavy;
+	font-weight: 800;
+}

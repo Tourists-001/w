@@ -1,0 +1,62 @@
+<wxs src="../../../filter/formatStr.wxs" module="format" />
+<wxs src="../../../filter/TimestampToDate.wxs" module="dateFr" />
+<import src="index_2.skeleton.wxml"/>
+<template is="skeleton" wx:if="{{loading}}" />
+<topBar showTabSearch="{{showTabSearch}}" wx:if="{{!loading}}"></topBar>
+<view class="container" wx:if="{{!loading}}">
+	<search wx:if="{{showSearch}}" bindsearchContent="searchContentFunc"></search>
+	<newHeader id="Header" bindrefresherrefreshList="refresherrefreshList" isLoading="{{isLoading}}" bindscrolltolowerList="scrolltolowerList" bindchangeTabbar="changeTabbar">
+		<view slot="all">
+			<view class="body-content" wx:if="{{showTopic}}">
+				<view class="topic-content" bindtap='openTopic' data-id="{{topic.id}}" wx:if="{{showTopic}}">
+					<view class="topic-title">
+						<view class="title">
+							<view>今日话题</view>
+						</view>
+					</view>
+					<image class="topic-image" mode="aspectFill" src="{{baseImgUrl + topic.attachments[0]}}"></image>
+					<view class="topic-data">
+						<view class="topic-data-content">{{topic.content}}</view>
+					</view>
+					<view class="topic-bottom">
+						<view class="topic-bottom-content">
+							<view class="topic-bottom-left">
+								<image src="/image/v2/index-browse.png"></image>
+								<view>{{format.formatStr(topic.view_number)}}次</view>
+							</view>
+							<view class="topic-bottom-middle" data-id="{{topic.id}}" catchtap='praiseTopic'>
+								<image src="{{liked ? '/image/v2/index-like.png' : '/image/v2/index-topic-zan.png'}}"></image>
+								<view>{{format.formatStr(paraiseNumber)}}</view>
+							</view>
+							<view class="topic-bottom-right">
+								<image src="/image/v2/index-topic-comment.png"></image>
+								<view>{{format.formatStr(topic.comment_number)}}</view>
+							</view>
+						</view>
+					</view>
+				</view>
+			</view>
+			<!-- 表白墙flag -->
+			<view class="body-flag" wx:if="{{showTopic}}">
+				<view class="flag">表白墙</view>
+				<view class="flag-tab"></view>
+			</view>
+			<postItem class="post_container" wx:for="{{allList}}" item='{{item}}' index='{{index}}' wx:key="this" bindcancelFollowCallBack="cancelFollowCallBack" binddeletePostItem="deletePostItemFunc"></postItem>
+		</view>
+		<view slot="hot">
+			<postItem class="post_container" wx:for="{{hotList}}" item='{{item}}' index='{{index}}' wx:key="this" bindcancelFollowCallBack="cancelFollowCallBack" binddeletePostItem="deletePostItemFunc"></postItem>
+		</view>
+		<view slot="prise">
+			<postItem class="post_container" wx:for="{{priseList}}" item='{{item}}' index='{{index}}' wx:key="this" bindcancelFollowCallBack="cancelFollowCallBack" binddeletePostItem="deletePostItemFunc"></postItem>
+		</view>
+	</newHeader>
+</view>
+
+ <view class='go_post'>
+	<!-- <view class='wall'></view> -->
+	<view class='post'>
+		<image src='/image/v2/index-poster.png' bindtap='post'></image>
+	</view>
+</view> 
+<!-- <!-- <get-more-loading wx:if="{{isLoading}}" showGeMoreLoadin="{{showGeMoreLoadin}}" /> -->
+<!-- <message></message>  -->

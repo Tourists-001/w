@@ -1,0 +1,9 @@
+.no-more-data{
+  width: 100%;
+  justify-content: space-around;
+  align-items: center;
+  font-size: 25rpx;
+  font-weight: 200;
+  text-align: center;
+  color: darkgray;
+}

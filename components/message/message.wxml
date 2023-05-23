@@ -1,0 +1,6 @@
+<view class='message-tip' bindtap='openMessage' wx:if="{{showMessage}}">
+    <view class='tip-content'>
+      <image src='/image/v2/bell.png'></image>
+      <view>{{newMessageNumber}}条新消息</view>
+    </view>
+  </view>

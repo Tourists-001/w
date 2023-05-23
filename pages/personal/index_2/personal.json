@@ -1,0 +1,7 @@
+{
+    "usingComponents": {
+        "topBar": "/components/topBar/topbar",
+        "sale": "/components/sale/sale",
+        "postItem": "/components/postItem/postItem"
+    }
+}

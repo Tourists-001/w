@@ -1,0 +1,14 @@
+<view class="navigation">
+	<view class="navigation-item" wx:for="{{list}}" wx:key="this">
+		<view data-type="{{item.id}}" bindtap="selected" class="select-tab">{{item.type}}</view>
+		<view class="{{select ==item.id ? 'select-tab-bootom' : ''}}" style="left: {{left + 'rpx'}}"></view>
+	</view>
+	<view class='search-container'>
+		<view class='search'>
+			<input type='text' class='search-input' placeholder="输入你要找的表白消息" bindinput='getFilter' />
+			<view class='search-image' bindtap='search'>
+				<image mode="" src='/image/v2/index-search.png'></image>
+			</view>
+		</view>
+	</view>
+</view>

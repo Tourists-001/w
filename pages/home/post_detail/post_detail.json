@@ -1,0 +1,7 @@
+{
+    "usingComponents": {
+        "postItem": "/components/postItem/postItem",
+        "topBar": "/components/topBar/topbar",
+        "commentInput": "/components/commentInput/commentInput"
+    }
+}

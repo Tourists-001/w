@@ -1,0 +1,6 @@
+<view class="input-container">
+	<view type="text" class="search" style="transform: scaleX({{scaleX}})" placeholder="请输入内容" bindtap="goSearchPage"></view>
+	<view class='search-image'>
+		<image mode="" src='/image/v2/index-search.png'></image>
+	</view>
+</view>

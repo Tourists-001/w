@@ -1,0 +1,14 @@
+module.exports.formatStr = function (count, flag=true) {
+	if (!count) return 0
+	if (count >= 100000) {
+		return Math.floor((count / 10000) * 10) / 10 + '万'
+		// return `${Math.floor((count / 10000) * 10) / 10}万` // 232.1 万
+	}
+	if (count >= 10000) {
+		return Math.floor((count / 10000) * 100) / 100 + '万'
+	}
+	if(count >= 100 && flag) {
+        return '99+'
+	}
+	return count
+}
