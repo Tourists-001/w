@@ -19,6 +19,8 @@ Page({
      */
     onLoad(options) {
         this.getList()
+        const userInfo = wx.getStorageSync('userInfo')
+        // this.subscribPrise(userInfo)
     },
     // 获取列表数据
     async getList() {
@@ -33,7 +35,7 @@ Page({
         const name = e.currentTarget.dataset.name
         const user_id = e.currentTarget.dataset.user_id
         wx.navigateTo({
-          url: `/pages/personal/private_letter/private_letter?message_list_id=${message_list_id}&name=${name}&user_id=${user_id}`,
+            url: `/pages/personal/private_letter/private_letter?message_list_id=${message_list_id}&name=${name}&user_id=${user_id}`,
         })
     },
     async deletePrivate(e) {
@@ -46,6 +48,32 @@ Page({
             list,
         })
 
+    },
+    subscribPrise(userInfo) {
+        const channel = userInfo.uuid
+        const that = this
+        // 监听表白墙的收藏
+        wx.goEasy.pubsub.subscribe({
+            channel, //替换为您自己的channel
+            onMessage: async function (message) { //收到消息
+                // console.log(message);
+                // 获取新消息的数量
+                console.log(message.content, 61);
+                const content = JSON.parse(message.content)
+                if (content.messageType) {
+                    await that.getMessageCount()
+                } else if (content.content_type) {
+                    await that.getPrivateLetterMumFunc()
+                }
+            },
+            onSuccess: function () {
+                console.log("Channel订阅成功。",70);
+            },
+            onFailed: function (error) {
+                console.log("Channel订阅失败, 错误编码：" + error.code + " 错误信息：" + error.content)
+            }
+        });
+        // 监听表白墙的评论
     },
     /**
      * 生命周期函数--监听页面初次渲染完成

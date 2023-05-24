@@ -5,6 +5,7 @@
 	  "not-more": "/components/not-more-tip/not-more-tip",
 	  "headerBar": "/components/headerbar/headerbar",
 	  "topBar": "/components/topBar/topbar",
-	  "sale": "/components/sale/sale"
+	  "sale": "/components/sale/sale",
+	  "notify": "/components/notify/notify"
 	}
   }

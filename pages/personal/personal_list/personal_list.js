@@ -30,6 +30,7 @@ Page({
         } else {
             this.getFanListFunc()
         }
+
     },
     async getFollowListFunc() {
         const res = await getFollowList()
@@ -43,6 +44,7 @@ Page({
             List: res.data
         })
     },
+
     /**
      * 生命周期函数--监听页面初次渲染完成
      */

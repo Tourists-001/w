@@ -40,3 +40,8 @@ module.exports.sendMessageLetter = async function(data) {
 module.exports.addMessageList = async function(data) {
 	return await httpRequest("POST", '/message', data)
 }
+
+// 获取新消息的数量
+module.exports.getPrivateLetterMum = async function() {
+	return await httpRequest('GET', '/letter/num', {})
+}

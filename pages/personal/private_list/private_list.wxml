@@ -18,10 +18,9 @@
                         {{item.frist_letter == null ? '' : item.frist_letter}}
                     </view>
                     <view class="vant_info">
-                        1
+                        {{item.message_num}}
                     </view>
                 </view>
-
             </view>
             <view slot="right" class="van-swipe-cell__right" bindtap="deletePrivate" data-index="{{index}}" data-id="{{item.id}}">
             <span class="del">删除</span>

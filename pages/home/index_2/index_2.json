@@ -2,6 +2,8 @@
     "usingComponents": {
         "van-tab": "@vant/weapp/tab/index",
         "van-tabs": "@vant/weapp/tabs/index",
+        "van-notify": "@vant/weapp/notify/index",
+        "notify": "/components/notify/notify",
         "header": "/components/header/header",
         "topBar": "/components/topBar/topbar",
         "search": "/components/search/search",

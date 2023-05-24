@@ -1,0 +1,19 @@
+<wxs src="../../filter/TimestampToDate.wxs" module="dateFr" />
+<van-transition show="{{ show }}" custom-class="block" name='slide-down' class="notify_container">
+    <view class="item" bindtap="goPrivateLetter" data-id="{{item.message_list_id}}" data-user_id="{{item.form_user.id}}" data-name="{{item.form_user.nickName}}">
+                <image src="{{baseImgUrl + item.form_user.avatar}}" alt="" class="avatar" />
+                <view class="info">
+                    <view class="top">
+                        <view class="nickname">
+                          {{item.form_user.nickName}}
+                        </view>
+                        <view class="time">
+                            {{dateFr.getDate(item.time, '-')}}
+                        </view>
+                    </view>
+                    <view class="content">
+                       {{item.content}}
+                    </view>
+                </view>
+            </view>
+</van-transition>

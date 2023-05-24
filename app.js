@@ -43,9 +43,9 @@ App({
         id: '',
         navTop: 0
     },
-    onLaunch: function (options) {
+    onLaunch:  function (options) {
         // 判断是否登录
-        this.getLoginInfo()
+         this.getLoginInfo()
         this.globalData.reloadSale = false;
         this.globalData.reloadHome = false;
         this.globalData.param = false;
@@ -85,7 +85,6 @@ App({
                 console.log("Failed to connect GoEasy, code:" + error.code + ",error:" + error.content);
             }
         });
-        // const channel = this.globalData.id
     },
 
     async getLoginInfo() {

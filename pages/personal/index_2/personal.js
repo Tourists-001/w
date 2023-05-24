@@ -1,7 +1,8 @@
 // pages/personal/index_2/personal.js
 const app = getApp();
 const {
-	getNewMessageCount
+	getNewMessageCount,
+	getPrivateLetterMum
 } = require('../../../api/message.js')
 const defaultAvatarUrl = 'https://mmbiz.qpic.cn/mmbiz/icTdbqWNOwNRna42FI242Lcia07jQodd2FJGIYQfG0LAJGFxM4FbnQP6yfMxBgJ0F3YRqJCJ1aPAK2dQagdusBZg/0'
 const {
@@ -58,7 +59,7 @@ Page({
 		showMessage: false,
 		newMessageNumber: 0,
 		bgImg: app.globalData.imageUrl + '/img/ing_bg.jpg',
-		newLetterNumber: 0
+		newLetterNumber: 0,
 	},
 
 	/**
@@ -80,6 +81,8 @@ Page({
 	onShow() {
 		//  请求用户信息
 		this.getUserInfoFunc()
+		this.getMessageCount()
+		this.getPrivateLetterMumFunc()
 	},
 	async getUserInfoFunc() {
 		const info = await getUserInfo()
@@ -144,15 +147,20 @@ Page({
 	},
 	subscribPrise(userInfo) {
 		const channel = userInfo.uuid
-		console.log(channel);
 		const that = this
 		// 监听表白墙的收藏
 		wx.goEasy.pubsub.subscribe({
 			channel, //替换为您自己的channel
 			onMessage: async function (message) { //收到消息
-				console.log(message);
+				// console.log(message);
 				// 获取新消息的数量
-				await that.getMessageCount()
+				console.log(message.content);
+				const content = JSON.parse(message.content)
+				if(content.messageType){
+					await that.getMessageCount()
+				} else if(content.content_type) {
+					await that.getPrivateLetterMumFunc()
+				}
 			},
 			onSuccess: function () {
 				console.log("Channel订阅成功。");
@@ -207,6 +215,14 @@ Page({
 	openMessage() {
 		wx.navigateTo({
 		  url: '/pages/personal/message/message',
+		})
+	},
+	// 获取消息的数量
+	async getPrivateLetterMumFunc() {
+		console.log('s');
+		const res = await getPrivateLetterMum()
+		this.setData({
+			newLetterNumber: res.data
 		})
 	},
 	/**
