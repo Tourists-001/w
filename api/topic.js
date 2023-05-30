@@ -37,7 +37,7 @@ const {
 module.exports.uploadImg = function (file) {
 	return new Promise((resolve, reject) => {
 		wx.uploadFile({
-			url: `${domain}/upload`, // 仅为示例，非真实的接口地址
+			url: `${domain}/upload`,
 			filePath: file.url,
 			name: 'img',
 			success(res) {

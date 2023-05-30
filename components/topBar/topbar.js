@@ -1,14 +1,6 @@
 const app = getApp()
 Component({
     properties: {
-        // defaultData（父页面传递的数据-就是引用组件的页面）
-        // defaultData: {
-        //     type: Object,
-        //     value: {
-        //         title: "我是默认标题"
-        //     },
-        //     observer: function (newVal, oldVal) {}
-        // },
         showTabSearch: {
             type: Boolean
         },
@@ -19,6 +11,10 @@ Component({
         tabTitle: {
             type: String,
             value: '校园小情书'
+        },
+        url: {
+            type: String,
+            value: null
         }
     },
     data: {
@@ -31,7 +27,13 @@ Component({
     attached: function () {},
     methods: {
         goBack() {
-            wx.navigateBack()
+            if(this.data.url) {
+                wx.redirectTo({
+                  url: this.data.url,
+                })
+            } else {
+                wx.navigateBack()
+            }
         },
         goSearchPage() {
             wx.navigateTo({

@@ -27,7 +27,7 @@ module.exports.deletePrivateList = async function(id) {
 }
 
 // 获取私信的具体内容
-module.exports.getLetterList = async function(id, limit=5, page = 1) {
+module.exports.getLetterList = async function(id,page = 1 , limit=10) {
 	return await httpRequest('GET', `/letter?id=${id}&limit=${limit}&page=${page}`)
 }
 
@@ -44,4 +44,9 @@ module.exports.addMessageList = async function(data) {
 // 获取新消息的数量
 module.exports.getPrivateLetterMum = async function() {
 	return await httpRequest('GET', '/letter/num', {})
+}
+
+// 已读所有消息
+module.exports.readAllMessage = async function(id) {
+	return await httpRequest('GET', `/letter/read/${id}`, {})
 }

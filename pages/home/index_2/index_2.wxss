@@ -23,7 +23,7 @@
 .go_post {
 	z-index: 990;
 }
-.go_post .wall {
+ .wall {
 	position: absolute;
 	z-index: 105;
 	width: 90rpx;

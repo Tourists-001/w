@@ -24,7 +24,7 @@
             <view class="nickname">
                 <view wx:if="{{!showLoginButton}}" class="nickname-data">{{user.nickName}}</view>
             </view>
-            <view class="follow-icon">
+            <view class="follow-icon" wx:if="{{id != my_id}}">
                 <view class="icon"  bindtap="priseOtherUser" data-type="{{user.isPrise}}">
                     {{user.isPrise? '取消关注': '关注'}}
                 </view>

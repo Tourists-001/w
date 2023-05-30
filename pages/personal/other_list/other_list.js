@@ -26,6 +26,7 @@ Page({
         allList: [],
         leftList: [],
         rightList: [],
+        my_id: ''
     },
 
     /**
@@ -34,8 +35,10 @@ Page({
     onLoad(options) {
         console.log(options);
         const id = Math.floor(options.id)
+        const userInfo = wx.getStorageSync('userInfo')
         this.setData({
             id,
+            my_id: userInfo.id
         })
         this.getOtherUserFunc(id)
         this.getPost()

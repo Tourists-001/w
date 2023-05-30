@@ -2,8 +2,7 @@
 <wxs src="../../../filter/TimestampToDate.wxs" module="dateFr" />
 <import src="index_2.skeleton.wxml"/>
 <template is="skeleton" wx:if="{{loading}}" />
-<!-- 在页面内添加自定义节点 -->
-<notify show="{{notifyShow}}" item="{{notifyList}}"></notify>
+<notify wx:if="{{isShowNotify}}"></notify>
 <topBar showTabSearch="{{showTabSearch}}" wx:if="{{!loading}}"></topBar>
 <view class="container" wx:if="{{!loading}}">
 	<search wx:if="{{showSearch}}" bindsearchContent="searchContentFunc"></search>

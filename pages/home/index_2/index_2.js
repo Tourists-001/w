@@ -2,7 +2,6 @@ const {
 	getPostByPage,
 	getHostPost,
 	getPraisePost,
-	getSearchPost
 } = require('../../../api/post')
 const {
 	getTopic,
@@ -11,11 +10,6 @@ const {
 const {
 	getUserInfo
 } = require('../../../api/user')
-const {
-	debounce,
-	throttle
-} = require('../../../utils/util')
-import Notify from '@vant/weapp/notify/notify';
 const app = getApp()
 Page({
 	/**
@@ -41,7 +35,7 @@ Page({
 		hotcancel: true,
 		prisecancel: true,
 		baseImgUrl: app.globalData.imageUrl,
-		notifyShow: false
+		isShowNotify: true
 	},
 	/**
 	 * 生命周期函数--监听页面加载
@@ -54,11 +48,14 @@ Page({
 		this.getPostAllFunc()
 		this.getHostPostFunc()
 		this.data.newHeader = this.selectComponent('#Header')
+
+		// const userInfo = wx.getStorageSync('userInfo')
+		// this.subscribPrise(userInfo)
+	},
+	onReady() {
 		this.setData({
 			loading: false
 		})
-		const userInfo = wx.getStorageSync('userInfo')
-		this.subscribPrise(userInfo)
 	},
 	async getPostAllFunc() {
 		const page = this.data.allpageNumber
@@ -316,11 +313,14 @@ Page({
 	subscribPrise(userInfo) {
 		const channel = userInfo.uuid
 		const that = this
-		// 监听表白墙的收藏
+		const page = getCurrentPages()
+		// console.log(page);
 		wx.goEasy.pubsub.subscribe({
 			channel, //替换为您自己的channel
 			onMessage: async function (message) { //收到消息
 				const content = JSON.parse(message.content)
+				console.log(message, 'index');
+				return
 				if (content.content) {
 					that.notifyInfo(content)
 				} else {
@@ -328,32 +328,21 @@ Page({
 				}
 			},
 			onSuccess: function () {
-				console.log("Channel订阅成功。", 70);
+				console.log("Channel订阅成功。", 'index');
 			},
 			onFailed: function (error) {
 				console.log("Channel订阅失败, 错误编码：" + error.code + " 错误信息：" + error.content)
 			}
 		});
 	},
-	notifyInfo(content) {
-		const list = {
-			content: content.content,
-			content_type: content.content_type,
-			form_user: content.form_user,
-			time: content.time,
-			message_list_id: content.message_list_id
-		}
-		console.log(list);
+	onShow() {
 		this.setData({
-			notifyList: list,
-			notifyShow: true
+			isShowNotify: true
 		})
-		// setTimeout(() => {
-		// 	this.setData({
-		// 		notifyShow: false,
-		// 		notifyList: []
-		// 	})
-		// }, 2000)
 	},
-
+	onHide() {
+		this.setData({
+			isShowNotify: false
+		})
+	},
 })

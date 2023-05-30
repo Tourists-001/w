@@ -12,6 +12,7 @@
     width: 95%;
     display: flex;
     flex-direction: column;
+    height: 85vh;
     /* margin-bottom: 50rpx; */
   }
   
@@ -178,6 +179,7 @@
     border-radius: 20rpx;
     border: 2rpx solid #303030;
     margin-right: -5rpx;
+    /* width: 350rpx; */
   }
   
   .right-content .right-time{
@@ -196,14 +198,17 @@
   /** 底部发送 **/
   .comment-input-container{
     position:fixed;
+    /* position: absolute; */
     bottom: 0rpx;
+    left: 0rpx;
     z-index:100;
+    height: 100rpx;
     width: 100%;
-    height: 200prx;
+    /* height: 200prx; */
     display: flex;
     flex-direction: row;
     align-items: center;
-    padding-top: 10rpx;
+    /* padding-top: 10rpx; */
     background: #ffffff;
     box-shadow: 0px 0px 10rpx 0px rgba(0,0,0,0.34); 
   }
@@ -256,8 +261,10 @@
   }
   
   .hei{  
-    margin-top: 50px;  
-    height: 20rpx;  
+    /* margin-top: 100px;   */
+    height: 60px;  
+    width: 100vw;
+    background-color: red;
   } 
   
   .text-content{

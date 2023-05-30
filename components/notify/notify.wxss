@@ -5,6 +5,7 @@
     left: 50%;
     margin-left: -47.5vw;
     margin-top: 60rpx;
+    z-index: 999;
 }
 
 .avatar {

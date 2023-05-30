@@ -1,6 +1,6 @@
 <wxs src="../../../filter/TimestampToDate.wxs" module="dateFr" />
 <topBar showTabSearch="{{false}}" showIcon="{{true}}" tabTitle="消息列表"></topBar>
-<scroll-view scroll-y class="scroll">
+<scroll-view scroll-y class="scroll" refresher-enabled refresher-triggered="{{loading}}" bindrefresherrefresh="refresherrefresh">
     <view class="container">
         <van-swipe-cell right-width="{{ 65 }}" class="swiper_cell" wx:for="{{list}}" wx:key="this">
             <view class="item" bindtap="goPrivateLetter" data-id="{{item.message_list_id}}" data-user_id="{{item.user.id}}" data-name="{{item.user.nickName}}">
@@ -17,13 +17,13 @@
                     <view class="content">
                         {{item.frist_letter == null ? '' : item.frist_letter}}
                     </view>
-                    <view class="vant_info">
+                    <view class="vant_info" wx:if="{{item.message_num>0}}">
                         {{item.message_num}}
                     </view>
                 </view>
             </view>
             <view slot="right" class="van-swipe-cell__right" bindtap="deletePrivate" data-index="{{index}}" data-id="{{item.id}}">
-            <span class="del">删除</span>
+                <span class="del">删除</span>
             </view>
         </van-swipe-cell>
     </view>

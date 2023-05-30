@@ -10,10 +10,10 @@ let RATE = wx.getSystemInfoSync().windowHeight / wx.getSystemInfoSync().windowWi
 const EventEmitter2 = require('eventemitter2');
 const emitter = new EventEmitter2();
 const {
-	$on,
+    $on,
     $emit,
     $remove
-  } = require('./utils/event')
+} = require('./utils/event')
 require('./utils/socket')
 import GoEasy from 'goeasy'
 
@@ -43,9 +43,9 @@ App({
         id: '',
         navTop: 0
     },
-    onLaunch:  function (options) {
+    onLaunch: function (options) {
         // 判断是否登录
-         this.getLoginInfo()
+        this.getLoginInfo()
         this.globalData.reloadSale = false;
         this.globalData.reloadHome = false;
         this.globalData.param = false;
@@ -58,20 +58,18 @@ App({
         // 胶囊按钮位置信息
         const menuButtonInfo = wx.getMenuButtonBoundingClientRect();
         // 导航栏高度 = 状态栏高度 + 44
-        that.globalData.navBarHeight = systemInfo.statusBarHeight + 10;
-        that.globalData.menuRight = systemInfo.screenWidth - menuButtonInfo.right;
-        that.globalData.statusBarHeight = menuButtonInfo.bottom + menuButtonInfo.top - systemInfo.statusBarHeight;
-        that.globalData.menuTop = menuButtonInfo.top;
-        that.globalData.menuHeight = menuButtonInfo.height;
-        that.globalData.navTop = (systemInfo.statusBarHeight + 10) + menuButtonInfo.top
-        that.globalData.screenHeight = systemInfo.screenHeight
-        that.globalData.screenMinHeight = that.globalData.screenHeight - that.globalData.navTop
-        // console.log(that.globalData.screenHeight ,  that.globalData.navTop);
+        this.globalData.navBarHeight = systemInfo.statusBarHeight + 10;
+        this.globalData.menuRight = systemInfo.screenWidth - menuButtonInfo.right;
+        this.globalData.statusBarHeight = menuButtonInfo.bottom + menuButtonInfo.top - systemInfo.statusBarHeight;
+        this.globalData.menuTop = menuButtonInfo.top;
+        this.globalData.menuHeight = menuButtonInfo.height;
+        this.globalData.navTop = (systemInfo.statusBarHeight + 10) + menuButtonInfo.top
+        this.globalData.screenHeight = systemInfo.screenHeight
+        this.globalData.screenMinHeight = this.globalData.screenHeight - this.globalData.navTop
         wx.emitter = emitter
         wx.$emit = $emit
         wx.$on = $on
         wx.$remove = $remove
-        // console.log(screenMinHeight, 65);
         wx.goEasy = GoEasy.getInstance({
             host: 'hangzhou.goeasy.io', //新加坡host：singapore.goeasy.io
             appkey: 'BC-710900c258584db3961aa37e0e4bade2', //替换为您的应用appkey
@@ -85,8 +83,7 @@ App({
                 console.log("Failed to connect GoEasy, code:" + error.code + ",error:" + error.content);
             }
         });
-    },
-
+    },  
     async getLoginInfo() {
         const res = await isLogin()
         if (res.code == 200 && res.data.id) {

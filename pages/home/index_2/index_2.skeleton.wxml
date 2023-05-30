@@ -19,7 +19,7 @@
   <view class="sk-container">
     <view is="components/topBar/topbar">
       <view class="topbar--nav-bar" style="height:37px; padding-top: 48px;">
-        <view class="topbar--title sk-transparent sk-text-14-2857-389 sk-text">
+        <view class="topbar--title">
           校园小情书
         </view>
       </view>
@@ -29,7 +29,7 @@
         <view class="search--input-container">
           <view class="search--search" style="transform: scaleX()"></view>
           <view class="search--search-image">
-            <image mode="true" class="sk-image"></image>
+            <!-- <image mode="true" class="sk-image"></image> -->
           </view>
         </view>
       </view>
@@ -58,7 +58,7 @@
                       <view class="postItem--body-item">
                         <view class="postItem--item-header">
                           <view class="postItem--avatar-item" data-id="22">
-                            <image class="postItem--avatar-border sk-image"></image>
+                            <!-- <image class="postItem--avatar-border sk-image"></image> -->
                             <image class="postItem--user-avatar sk-image"></image>
                           </view>
                           <view class="postItem--nickname-item" data-id="22">
