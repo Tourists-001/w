@@ -7,6 +7,8 @@ const {
 const {
 	followAuthor
 } = require('../../../api/user')
+let inputHeight = 50; //输入框的高度
+let windowHeight = wx.getSystemInfoSync().windowHeight;
 const app = getApp()
 Page({
 	/**
@@ -24,7 +26,9 @@ Page({
 		isGoDetailt: false,
 		showComment: false,
 		commenter: {},
-		loading: true
+		loading: true,
+		scrollHeight: windowHeight - 85,
+		scrollTop: 0,
 	},
 
 	/**
@@ -41,6 +45,7 @@ Page({
 		this.setData({
 			post_id: options.id
 		})
+		console.log(this.data.scrollHeight);
 		const id = options.id
 		this.getpostFun(id)
 	},
@@ -130,7 +135,8 @@ Page({
 			bool
 		} = e.detail
 		this.setData({
-			showComment: bool
+			showComment: bool,
+			scrollHeight: windowHeight - 85,
 		})
 		const obj = e.detail
 		if (obj.post_id) {
@@ -165,6 +171,12 @@ Page({
 				icon: 'none'
 			})
 		}
+	},
+	commentfocus(e) {
+		console.log(e);
+		this.setData({
+			scrollHeight : e.detail,
+		})
 	},
 	/**
 	 * 生命周期函数--监听页面初次渲染完成

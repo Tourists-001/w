@@ -19,7 +19,7 @@ const httpRequest = function (_methods, _url, _data) {
 			success: (res) => {
 				if (res.data.code !== 200) {
 					wx.showToast({
-						title: '网络错误',
+						title: res.data.msg,
 						icon: 'none',
 					})
 					wx.hideLoading()

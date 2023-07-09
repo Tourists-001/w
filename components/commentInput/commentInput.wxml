@@ -1,6 +1,6 @@
 <!-- 输入框 -->
-<view class='comment-input-container'>
-	<input placeholder="评论" auto-focus maxlength="1024" cursor-spacing="15" fixed="true" auto-height  model:value="{{myValue}}" />
+<view class='comment-input-container' style="bottom: {{inputHeight}}px">
+	<input adjust-position="{{false}}" placeholder="评论" auto-focus maxlength="1024" cursor-spacing="15" fixed="true" auto-height  model:value="{{myValue}}" bindfocus="focus" bindblur="blur"/>
 	<view class='send-button' bindtap='sendComment'>
 		<view>发送</view>
 	</view>

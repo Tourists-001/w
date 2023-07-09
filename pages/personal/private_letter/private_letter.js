@@ -91,7 +91,7 @@ Page({
     this.setData({
       toView: 'msg-' + (list.length - 1),
     })
-    console.log(windowHeight, height, inputHeight, this.data.scrollHeight, this.data.toView);
+    // console.log(windowHeight, height, inputHeight, this.data.scrollHeight, this.data.toView);
     // }
   },
   inputBlur(e) {

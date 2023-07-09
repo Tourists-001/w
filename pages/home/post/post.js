@@ -92,6 +92,12 @@ Page({
                   icon: 'none'
                 })
             }
+            if(obj.topic.length>10) {
+                wx.showToast({
+                    title: '名字超出10个字符',
+                    icon: 'none'
+                  })
+            }
             console.log(obj);
             const res = await addPost(obj)
             console.log(res);
@@ -111,6 +117,12 @@ Page({
     },
     getName: function (event) {
         let value = event.detail.value;
+        if(value.length > 10) {
+            wx.showToast({
+                title: '名字超出10个字符',
+                icon: 'none'
+              })
+        }
         this.setData({
             name: value
         });

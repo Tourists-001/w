@@ -65,7 +65,7 @@
 		  wx:for="{{comments}}" 
 		  wx:key="id">
 	  <view class='left'>
-		<view class='user-image' bindtap="openUserInfo" data-id="{{item.poster.userInfoId}}">
+		<view class='user-image' bindtap="openUserInfo" data-id="{{item.poster.id}}">
 		  <image class="avatar-border" src="/image/v2/border.png"></image>
 		  <image class="comment-user-avatar" src='{{baseImageUrl+item.poster.avatar}}'></image>
 		</view>
@@ -73,7 +73,7 @@
 	  <view class='right'>
 		<view 
 		  class='comment-name right-item'>
-		  <view  class="comment-nickname" bindtap="openUserInfo" data-id="{{item.commenter.id}}">{{item.poster.nickName}}</view>
+		  <view  class="comment-nickname" bindtap="openUserInfo" data-id="{{item.poster.id}}">{{item.poster.nickName}}</view>
 		  <image class='letter-image'
 				  bindtap='letter'
 				  wx:if="{{sale.can_chat==true && param==true}}"

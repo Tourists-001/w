@@ -66,7 +66,7 @@ Page({
 		myRankData: '',
 		myRank: 0,
 		windowHeight: app.globalData.windowHeight,
-		bgUlr: app.globalData.imageUrl + '/img/Group.png',
+		bgUlr: app.globalData.imageUrl + 'img/Group.png',
 		showMore: true,
 		step_bg:  app.globalData.imageUrl + '/img/step_bg.jpg'
 	},

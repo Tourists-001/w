@@ -11,6 +11,8 @@ const {
 const app = getApp()
 const emitter = app.globalData.emitter
 const config = require('../../../config')
+let inputHeight = 50; //输入框的高度
+let windowHeight = wx.getSystemInfoSync().windowHeight;
 Page({
   /**
    * 页面的初始数据
@@ -26,7 +28,8 @@ Page({
     paraiseNumber: 0,
     showCommentInput: false,
     commentId: 0,
-    baseImgUrl: config.imgUrl
+    baseImgUrl: config.imgUrl,
+    scrollHeight: windowHeight  - 85,
   },
   /**
    * 生命周期函数--监听页面加载
@@ -48,7 +51,7 @@ Page({
     const {
       data
     } = await getUserInfo()
-    const likedList = data.likedTopic
+    const likedList =JSON.parse(data.likedTopic)
     for (let i = 0; i < likedList.length; i++) {
       if (likedList[i] === +id) {
         this.setData({
@@ -88,21 +91,21 @@ Page({
   async openCommentTopic(e) {
     console.log(e);
     let id = e.currentTarget.dataset.id;
-    wx.navigateTo({
+    wx.redirectTo({
       url: '/pages/home/topic_comment/topic_comment?id=' + id
     })
   },
   // 获取评论
   async getTopicCommentFunc(id,page = this.data.pageNumber ) {
-    if(page == 1) {
-      this.setData({
-        isBottom: false,
-      }) 
-    }
-    this.setData({
-      isBottom: false,
-      showGeMoreLoadin: false
-    })
+    // if(page == 1) {
+    //   this.setData({
+    //     isBottom: false,
+    //   }) 
+    // }
+    // this.setData({
+    //   isBottom: false,
+    //   showGeMoreLoadin: false
+    // })
     const limit = 5
     let token = wx.getStorageSync('token')
     wx.request({
@@ -129,9 +132,11 @@ Page({
             pageNumber: this.data.pageNumber + 1,
           })
         } else {
-          this.setData({
-            isBottom: true,
-            showGeMoreLoadin: true
+          this.data.showGeMoreLoadin = true
+          wx.showToast({
+            title: '没有更多了',
+            icon: 'none',
+            duration: 500
           })
         }
       },
@@ -194,9 +199,14 @@ Page({
     })
   },
   hiddenComment() {
-    console.log(11);
     this.setData({
       showCommentInput: false,
+    })
+  },
+  openUserInfo(e) {
+    const id = e.currentTarget.dataset.id
+    wx.navigateTo({
+      url: `/pages/personal/other_list/other_list?id=${id}`
     })
   }
 })

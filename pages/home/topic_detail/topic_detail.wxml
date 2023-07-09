@@ -1,6 +1,6 @@
 <wxs src="../../../filter/formatStr.wxs" module="format" />
 <topBar showIcon="{{true}}"></topBar>
-<scroll-view style="height: 85vh;" scroll-y wx:if="{{topic}}" bindscrolltolower="scrollPage" bindtap="hiddenComment">
+<scroll-view style="height: {{scrollHeight}}px" scroll-y wx:if="{{topic}}" bindscrolltolower="scrollPage" bindtap="hiddenComment">
 	<view class="topic_container">
 	<view class="topic-content">
 		<view class="topic-title">
@@ -31,7 +31,7 @@
 							<view>{{format.formatStr(paraiseNumber)}}</view>
 						</view>
 						<view class="topic-bottom-right">
-							<image src="/image/v2/index-topic-comment.png" bindtap='openCommentTopic' data-id="{{id}}"></image>
+							<image src="/image/v2/index-topic-comment.png" catchtap='openCommentTopic' data-id="{{id}}"></image>
 							<view>{{format.formatStr(topic.comment_number)}}</view>
 						</view>
 					</view>
@@ -41,12 +41,12 @@
 
 		<view class='comment-item' wx:for="{{comments}}" wx:key="this">
 			<view class='left'>
-				<view class='user-image' bindtap="openUserInfo" data-id="{{item.commenter.id}}">
+				<view class='user-image' bindtap="openUserInfo" data-id="{{item.commenter.commenter_id}}">
 					<image class="avatar-border" src="/image/v2/border.png"></image>
-					<image class="user-avatar" src='{{item.commenter.avatar}}'></image>
+					<image class="user-avatar" src='{{baseImgUrl +item.commenter.avatar}}'></image>
 				</view>
 				<view class='comment-name'>
-					<view bindtap="openUserInfo" data-id="{{item.commenter.id}}">{{item.commenter.nickname}}</view>
+					<view bindtap="openUserInfo" data-id="{{item.commenter.commenter_id}}">{{item.commenter.nickname}}</view>
 					<image wx:if="{{item.can_delete}}" data-refid="{{item.id}}" bindtap="removeComment" class="comment-delete-icon" src="/image/v2/index-delete.png"></image>
 				</view>
 			</view>
@@ -68,8 +68,8 @@
 						<view class='comment-wall-item' wx:if="{{!sub.ref_comment}}">
 							<view class='comment-user-container'>
 								<view class="comment-user inline-item" data-objid="{{item.id}}" data-type='5' data-refid="{{sub.id}}">
-									<image class="comment-user-avatar" src='{{sub.commenter.avatar}}'></image>
-									<view class="comment-nickname">{{sub.commenter.nickname}}：</view>
+									<image class="comment-user-avatar" bindtap="openUserInfo" data-id="{{sub.commenter.commenter_id}}" src='{{baseImgUrl +sub.commenter.avatar}}'></image>
+									<view class="comment-nickname"  bindtap="openUserInfo" data-id="{{sub.commenter.commenter_id}}">{{sub.commenter.nickname}}：</view>
 									<view class='inline-item'>{{sub.content}}</view>
 								</view>
 							</view>
@@ -100,4 +100,4 @@
 	</view>
 </view>
 <!-- 加载更多 -->
-<get-more-loading wx:if="{{isBottom}}" showGeMoreLoadin="{{showGeMoreLoadin}}" />
+<!-- <get-more-loading wx:if="{{isBottom}}" showGeMoreLoadin="{{showGeMoreLoadin}}" /> -->

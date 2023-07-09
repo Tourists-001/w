@@ -149,4 +149,10 @@ Page({
          if(this.data.showGeMoreLoadin) return
          this.getComment()
     },
+    openUserInfo(e){
+        const id = e.currentTarget.dataset.id
+        wx.navigateTo({
+            url: `/pages/personal/other_list/other_list?id=${id}`
+          })
+    }
 })

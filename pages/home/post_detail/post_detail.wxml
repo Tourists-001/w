@@ -1,7 +1,7 @@
 <import src="post_detail.skeleton.wxml"/>
-<template is="skeleton" wx:if="{{loading}}" />
+<!-- <template is="skeleton" wx:if="{{loading}}" /> -->
 <topBar showTabSearch="{{showTabSearch}}" showIcon="{{showIcon}}"></topBar>
-<scroll-view wx:if="{{!loading}}" class='wall-container' scroll-y style="height: 90vh;" wx:if="{{posts.length != 0}}">
+<scroll-view  class='wall-container' 	scroll-top="{{scrollTop}}" scroll-y style="height: {{scrollHeight}}px" wx:if="{{posts.length != 0}}">
 	<postItem class="post_container" wx:for="{{posts}}" item='{{item}}' index='{{index}}' wx:key="this" bindgoPostDetail="goPostDetailFunc" isGoDetailt="true" bindhiddenComment="hiddenComment"></postItem>
-	<commentInput wx:if="{{showComment}}" bindsendComment="sendComments"></commentInput>
+	<commentInput wx:if="{{showComment}}" bindsendComment="sendComments" bindcommentfocus="commentfocus"></commentInput>
 </scroll-view>

@@ -1,5 +1,5 @@
 .content {
-    width: 90%;
+    width: 95%;
     display: flex;
     /* flex-direction: column; */
     align-items: center;
@@ -25,8 +25,8 @@
     position: relative;
 }
 .message-avatar-border {
-    width: 60rpx;
-    height: 60rpx;
+    width: 80rpx;
+    height: 80rpx;
     position: absolute;
     z-index: 200;
     left: -15rpx;
@@ -59,7 +59,7 @@
     font-size: 28rpx;
     background: linear-gradient(126deg, #ffd73b 0%, #fbc346 100%);
     border-radius: 100rpx;
-    width: 120rpx;
+    width: 130rpx;
     height: 50rpx;
     display: flex;
     justify-content: center;

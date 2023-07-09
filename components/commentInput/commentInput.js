@@ -1,5 +1,6 @@
 const app = getApp()
-let emitter = app.globalData.emitter
+let inputHeight = 50; //输入框的高度
+let windowHeight = wx.getSystemInfoSync().windowHeight;
 Component({
   /**
    * 组件的属性列表
@@ -10,6 +11,7 @@ Component({
   data: {
     index: '',
     isShow: false,
+    inputHeight: 0,
   },
   created() {
     wx.$on({
@@ -38,6 +40,21 @@ Component({
       this.setData({
         myValue: ''
       })
+    },
+    focus(e) {
+      // console.log(e);
+      const height = e.detail.height
+      this.setData({
+        inputHeight: height
+      })
+      const scrollHeight = (windowHeight - height - inputHeight - 85)
+      this.triggerEvent('commentfocus', scrollHeight)
+    },
+    blur(e) {
+      this.setData({
+        inputHeight: 0
+      })
+      this.triggerEvent('commentfocus', windowHeight - 85 )
     }
   }
 })

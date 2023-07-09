@@ -46,7 +46,7 @@
 				<image src="/image/v2/index-like.png"></image>
 			</view>
 			<view class="praise-right">
-				<view class="praise-item" bindtap="openUserInfo" data-id="{{item.user_id}}" wx:for="{{item.praisesInfo}}" wx:key="id">
+				<view class="praise-item" catchtap="openUserInfo" data-id="{{item.id}}" wx:for="{{item.praisesInfo}}" wx:key="id">
 					<image src="{{baseImageUrl +item.avatar}}"></image>
 					<view class="praise-name">{{item.nickName}}</view>
 				</view>
@@ -59,14 +59,14 @@
 			<view class="comment-right" wx:if="{{!isGoDetailt}}">
 				<view class="comment-item" wx:if="{{!sub.ref_comment}}" wx:for="{{item.comments}}" wx:key="id" wx:for-item="sub" catchtap="commentOtherComment" bindlongpress="{{item.can_delete?'deleteComment':''}}" data-refid="{{sub.comment_user.id}}" data-objid="{{sub.id}}" data-index="{{index}}">
 					<!-- <image src="{{baseImageUrl +sub.comment_user.avatar}}"></image> -->
-					<view class="comment-name">{{sub.comment_user.nickName}}</view>
+					<view class="comment-name" catchtap="openUserInfo" data-id="{{sub.comment_user.id}}">{{sub.comment_user.nickName}}</view>
 					<view class="comment-word">：{{sub.content}}</view>
 					<view class="sub_comment" wx:for="{{sub.sub_comment}}" wx:key="this" wx:for-item="subs" data-commentId="{{item.id}}">
 						<!-- <image src="{{baseImageUrl +subs.comment_user.avatar}}"></image> -->
-						<view class="sub_comment_user">{{subs.comment_user.nickName }}</view>
+						<view class="sub_comment_user" catchtap="openUserInfo" data-id="{{subs.comment_user.id}}">{{subs.comment_user.nickName }}</view>
 						<view style="word-break: keep-all">回复</view>
 						<!-- <image src="{{baseImageUrl +subs.ref_commenter.avatar}}"></image> -->
-						<view class="ref_commenter">{{subs.ref_commenter.nickName}}</view>
+						<view class="ref_commenter" catchtap="openUserInfo" data-id="{{subs.ref_commenter.id}}">{{subs.ref_commenter.nickName}}</view>
 						<view class="sub_content">：{{subs.content}}</view>
 					</view>
 				</view>

@@ -2,7 +2,7 @@
 <view class='post-container container'>
   <view class='form'>
     <textarea 
-        maxlength="1024"
+        maxlength="100"
         class='textarea-content'
         placeholder="爱情属于勇敢的人"    
         bindinput="getTextContent"/>

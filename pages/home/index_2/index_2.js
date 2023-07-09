@@ -16,6 +16,7 @@ Page({
 	 * 页面的初始数据
 	 */
 	data: {
+		id: '',
 		allList: [],
 		hotList: [],
 		priseList: [],
@@ -48,14 +49,16 @@ Page({
 		this.getPostAllFunc()
 		this.getHostPostFunc()
 		this.data.newHeader = this.selectComponent('#Header')
-
-		// const userInfo = wx.getStorageSync('userInfo')
-		// this.subscribPrise(userInfo)
 	},
 	onReady() {
 		this.setData({
 			loading: false
 		})
+	},
+	onShow() {
+		console.log(61);
+		this.getTopicFunc(this.data.id)
+		// this.getPostAllFunc()
 	},
 	async getPostAllFunc() {
 		const page = this.data.allpageNumber
@@ -84,7 +87,7 @@ Page({
 				wx.showToast({
 					title: '没有更多了',
 					icon: 'none',
-					duration: 1000
+					duration: 500
 				})
 			}
 		}
@@ -179,12 +182,19 @@ Page({
 			data
 		} = await getUserInfo()
 		wx.hideLoading()
-		const likedList = data.likedTopic
+		const likedList =JSON.parse(data.likedTopic)
+		console.log(likedList);
 		for (let i = 0; i < likedList.length; i++) {
+			console.log(likedList[i] , +id);
+			this.setData({
+				liked: false,
+			})
 			if (likedList[i] === +id) {
+				console.log(186);
 				this.setData({
 					liked: true,
 				})
+				console.log(this.data.liked);
 			}
 		}
 	},
@@ -261,6 +271,7 @@ Page({
 				allList: []
 			})
 			this.getPostAllFunc()
+			this.getTopicFunc()
 		} else if (currentIndex === 1) {
 			this.setData({
 				hotPageNumber: 1,
@@ -334,15 +345,5 @@ Page({
 				console.log("Channel订阅失败, 错误编码：" + error.code + " 错误信息：" + error.content)
 			}
 		});
-	},
-	onShow() {
-		this.setData({
-			isShowNotify: true
-		})
-	},
-	onHide() {
-		this.setData({
-			isShowNotify: false
-		})
 	},
 })
